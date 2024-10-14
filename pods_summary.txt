@@ -1,0 +1,20 @@
+nginx-deployment  nginx-deployment-794b6869db-2gtd9   node05
+nginx-deployment  nginx-deployment-794b6869db-5s4c2   node03
+nginx-deployment  nginx-deployment-794b6869db-6lzb6   node04
+nginx-deployment  nginx-deployment-794b6869db-7k899   node02
+nginx-deployment  nginx-deployment-794b6869db-jhk86   master01
+nginx-deployment  nginx-deployment-794b6869db-lshxl   master01
+nginx-deployment  nginx-deployment-794b6869db-vx569   
+calico-kube-controllers  calico-kube-controllers-564985c589-4x26t   master01
+coredns  coredns-55cb58b774-2m7wj   master01
+coredns  coredns-55cb58b774-hrn5l   master01
+metrics-server  metrics-server-596b5fd4c-khdfg   master01
+kuboard-agent  kuboard-agent-cf4c56574-bgnnf   master01
+kuboard-agent  kuboard-agent-cf4c56574-fr4b6   node01
+kuboard-agent-2  kuboard-agent-2-79d64b665d-gllxh   master01
+kuboard-v3  kuboard-v3-8664f76c6-8spxg   master01
+kuboard-v3  kuboard-v3-8664f76c6-dlxqz   node01
+kuboard-v3  kuboard-v3-8664f76c6-fn2r4   master01
+kuboard-v3  kuboard-v3-8664f76c6-sz7tl   master01
+metrics-scraper  metrics-scraper-7bbfb87b6-pwdjz   master01
+

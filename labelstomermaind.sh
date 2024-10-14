@@ -27,7 +27,7 @@ sed -i '/^$/d' "$filelabels"
     echo "Output labels saved to $filelabels"
 
 # 输出文件名
-filesubgraph="/usr/share/nginx/html/subgraph.txt"
+filesubgraph="node_subgraph.txt"
 
 # 检查输入文件是否存在
 if [[ ! -f "$filelabels" ]]; then

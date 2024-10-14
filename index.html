@@ -3,43 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>...</title>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // 获取 subgraph.txt 文件内容
-            fetch('subgraph.txt') 
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('网络请求出现问题：' + response.statusText);
-                    }
-                    return response.text(); // 解析文本内容
-                })
-                .then(data => {
-                    const graphDiv = document.getElementById('mermaidGraph');
-                    // 更新内容为获取到的数据
-                    //const formattedData = data.replace(/\n/g, "<br>");
-                    graphDiv.innerHTML = data;
-
-                    // 动态加载 mermaid.min.js
-                    const newScript = document.createElement('script');
-                    newScript.src = 'mermaid.min.js';
-                    newScript.onload = () => {
-                        mermaid.init(); // 在脚本加载完成后初始化 mermaid
-                    };
-                    document.head.appendChild(newScript); // 将新脚本添加到文档中
-                })
-                .catch(error => {
-                    console.error('发生错误：', error);
-                });
-        });
-    </script>
+    <script src="mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <title>拓扑展示</title>  
 </head>
 <body>
     <h1>拓扑展示</h1>
-    <p>节点关系</p>
-
-    <!-- Mermaid 图示 -->
-    <div class="mermaid" id="mermaidGraph">
+    <p>展示示例</p>
+    <!-- 添加一个 Mermaid 图示的示例 -->
+    <div class="mermaid">
         graph TD
         subgraph region
         subgraph zone
@@ -48,5 +20,7 @@
         end
         end
     </div>
+    <p><a href="/node.html" target="_blank">node拓扑展示</a></p>
+    <p><a href="/pod.html" target="_blank">pod拓扑展示</a></p>
 </body>
 </html>
