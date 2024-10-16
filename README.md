@@ -1,8 +1,22 @@
-# 把主机标签拓扑信息输出展示
-效果
-![alt text](/images/image.png "效果图")
+# 拓扑信息输出展示
+1、node拓扑展示效果
 
-# 待解决问题:
+![alt text](/images/image01.png "效果图")
+
+2、pod拓扑展示效果
+
+![alt text](/images/image01.png "效果图")
+
+# 使用方式
+
+""
+docker build -t k8stopologyshow:v0.2 .
+
+docker run -d -p 8082:80 k8stopologyshow:v0.2
+
+""
+
+# 待解决问题
 
 k8s集群认证问题
 
