@@ -11,10 +11,11 @@ RUN curl -LO "https://dl.k8s.io/release/v1.30.5/bin/linux/amd64/kubectl" && \
     mv ./kubectl /usr/local/bin/kubectl
 
 # 复制自定义 Nginx 配置和 HTML 文件
+COPY mermaid.min.js /usr/share/nginx/html/
+
 COPY config /root/.kube/config
 
 COPY index.html /usr/share/nginx/html/
-COPY node.html /usr/share/nginx/html/
 COPY pod.html /usr/share/nginx/html/
 COPY k8s_node_labels_extracted.txt /usr/share/nginx/html/
 COPY node_subgraph.txt /usr/share/nginx/html/

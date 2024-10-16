@@ -35,7 +35,7 @@ for namespace in $namespaces; do
 done
 
 # 将汇总信息输出到文件
-output_file="pods_summary.txt"
+output_file="/usr/local/bin/pods_summary.txt"
 echo -e "$pods_info" > "$output_file"  # 使用 -e 选项确保换行符被正确处理
 
 # 提示用户输出文件位置

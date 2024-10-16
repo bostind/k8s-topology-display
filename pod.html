@@ -31,13 +31,15 @@
                 .catch(error => {
                     console.error('发生错误：', error);
                 });
+                fetchData();
+               // 每 5 秒钟获取一次数据
+               setInterval(fetchData, 10000); // 10 秒
         });
     </script>
 </head>
 <body>
     <h1>pods拓扑展示</h1>
-    <p><a href="/index.html" target="_blank">主页</a></p>
-    <p><a href="/node.html" target="_blank">node拓扑展示</a></p>
+    <p><a href="/index.html" target="_blank">node拓扑展示</a></p>
     <!-- Mermaid 图示 -->
     <div class="mermaid" id="mermaidGraph">
 

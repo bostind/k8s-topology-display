@@ -2,8 +2,8 @@
 
 # 文件名
 filelabels="k8s_node_labels_extracted.txt"
-filesubgraph="pod_subgraph.txt"
-pods_info="pods_summary.txt"
+filesubgraph="/usr/local/bin/pod_subgraph.txt"
+pods_info="/usr/local/bin/pods_summary.txt"
 
 # 检查 kubectl 和 jq 是否存在
 if ! command -v kubectl &> /dev/null || ! command -v jq &> /dev/null; then
