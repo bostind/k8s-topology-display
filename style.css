@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f3f3e2;
+}
+
+.region-container {
+  
+    border: 1px solid #b0b084;
+    background-color: #f9f9d8;
+    margin: 10px;
+    padding: 10px;
+    display: flex;  
+    flex-direction: column; /* 垂直排列区域 */
+    align-items: center; /* 左对齐 */
+}
+
+.zone-container {
+    border: 1px solid #a0a0a0; /* 添加边框样式 */
+    margin: 5px 0; /* 上下间距 */
+    padding: 10px;
+    display: flex; /* 水平排列 Zones */
+    flex-wrap: wrap; /* 允许换行 */
+    justify-content: center; /* 水平居中对齐 */
+    align-items: flex-start;
+}
+.rack-container {
+    border: 1px solid #ccc;
+    margin: 5px;
+    padding: 10px;
+    flex: 1 0 30%; /* 每个 rack 30% 宽度 */
+    display: flex; /* 使用flex布局 */
+    flex-direction: column; /* 允许垂直堆叠节点 */
+    align-items: center; /* 水平居中 */
+}
+
+.node {
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid #7a7ab0;
+    background-color: #e8e8ff;
+    border-radius: 5px;
+    text-align: center;
+    width: 100%; /* 节点宽度填满 */
+    height: 50px; /* 设置固定高度 */
+    display: flex; /* 使用flex布局 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+}
+.region-container h1, .zone-container h2 {
+    flex-direction: column; /* 允许垂直堆叠节点 */
+    text-align: center; /* 水平居中 */
+}
+/* 媒体查询用于调整小屏幕的布局 */
+@media (max-width: 768px) {
+    .rack-container {
+        flex: 1 0 100%; /* 小屏幕时每个 rack 占满 100% 宽度 */
+    }
+}

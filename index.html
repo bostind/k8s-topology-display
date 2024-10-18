@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拓扑展示</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button id="run-node-script">刷新</button>
+    <a href="pod.html" target="_blank">pod拓扑展示</a>
+    <div id="content-display" class="region-container"></div>
+    <script src="node_script.js"></script>
+    <script>
+        // 添加按钮点击事件处理
+        document.getElementById('run-node-script').addEventListener('click', function() {
+            fetch('/run-node-script', {
+                method: 'POST',
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("脚本执行结果:", data);
+                //setTimeout(function() {
+                location.reload();
+            //}, 5000); // 5000毫秒即5秒
+            })
+            .catch((error) => {
+                console.error("发生错误:", error);
+            });
+        });
+    </script>
+</body>
+</html>
