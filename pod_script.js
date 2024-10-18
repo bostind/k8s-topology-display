@@ -1,82 +1,114 @@
 document.addEventListener('DOMContentLoaded', () => {
     const contentDisplay = document.getElementById('content-display');
+    const deploymentSelect = document.getElementById('deployment-select');
 
     // 从服务器获取内容的函数
     function fetchContent() {
         fetch('/api/pods') // 从 server.js 提供的 API 获取内容
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('网络响应不是 OK');
-                }
-                return response.json();
-            })
+            .then(response => response.json())
             .then(data => {
-                // 清空之前的内容
-                contentDisplay.innerHTML = '';
-
-                // 遍历区域
-                Object.keys(data).forEach(region => {
-                    const regionDiv = document.createElement('div');
-                    regionDiv.className = 'region-container';
-                    regionDiv.innerHTML = `<h1>${region}</h1>`;
-
-                    // 获取区
-                    const zones = data[region];
-                    Object.keys(zones).forEach(zone => {
-                        const zoneDiv = document.createElement('div');
-                        zoneDiv.className = 'zone-container';
-                        zoneDiv.innerHTML = `<h2>${zone}</h2>`;
-
-                        // 遍历 rack
-                        const racks = zones[zone];
-                        Object.keys(racks).forEach(rack => {
-                            const rackDiv = document.createElement('div');
-                            rackDiv.className = 'rack-container';
-                            rackDiv.innerHTML = `<h3>${rack}</h3>`;
-
-                            // 获取对应的主机名及其下的 pods
-                            const hosts = racks[rack];
-                            Object.keys(hosts).forEach(hostname => {
-                                const pods = hosts[hostname];
-                                
-                                // 创建一个框线显示 hostname
-                                const hostnameDiv = document.createElement('div');
-                                hostnameDiv.className = 'hostname-container';
-                                hostnameDiv.innerHTML = `<strong>${hostname}</strong>`; // 显示 hostname
-
-                                // 如果有 pods，进行展示
-                                if (pods.length > 0) {
-                                    pods.forEach(pod => {
-                                        const podDiv = document.createElement('div');
-                                        podDiv.className = 'pod'; // 可以添加相应的样式
-                                        podDiv.textContent = pod.pod_name; // 只显示 pod_name
-                                        hostnameDiv.appendChild(podDiv); // 将 pod 放入 hostname 的框中
-                                    });
-                                } else {
-                                    const noPodsDiv = document.createElement('div');
-                                    noPodsDiv.textContent = 'No Pods available'; // 当没有 Pods 时的提示
-                                    hostnameDiv.appendChild(noPodsDiv);
-                                }
-
-                                rackDiv.appendChild(hostnameDiv); // 将 hostname 的框添加到机架 div 中
-                            });
-
-                            zoneDiv.appendChild(rackDiv); // 添加 rack 到 zone
-                        });
-
-                        regionDiv.appendChild(zoneDiv); // 添加 zone 到 region
-                    });
-
-                    contentDisplay.appendChild(regionDiv); // 添加 region 到页面
-                });
+                populateDeploymentSelect(data);
+                displayPods(data);
             })
             .catch(error => console.error('错误:', error));
+    }
+
+    // 填充下拉框
+    function populateDeploymentSelect(data) {
+        const deployments = new Set();
+
+        // 提取所有 deployment_name
+        Object.values(data).forEach(region =>
+            Object.values(region).forEach(zone =>
+                Object.values(zone).forEach(rack =>
+                    Object.keys(rack).forEach(hostname =>
+                        rack[hostname].forEach(pod => {
+                            if (pod.deployment_name) {
+                                deployments.add(pod.deployment_name);
+                            }
+                        })
+                    )
+                )
+            )
+        );
+
+        deploymentSelect.innerHTML = '<option value="">选择 Deployment</option>'; // 初始化默认选项
+        deployments.forEach(deployment => {
+            const option = document.createElement('option');
+            option.value = deployment;
+            option.textContent = deployment;
+            deploymentSelect.appendChild(option);
+        });
+    }
+
+    // 根据选择展示 Pod 信息
+    deploymentSelect.addEventListener('change', () => {
+        fetch('/api/pods')
+            .then(response => response.json())
+            .then(data => {
+                const selectedDeployment = deploymentSelect.value;
+                if (selectedDeployment) {
+                    displayPods(data, selectedDeployment);
+                } else {
+                    displayPods(data);
+                }
+            })
+            .catch(error => console.error('错误:', error));
+    });
+
+    // 根据指定的 deployment_name 展示 Pods（如果未指定则展示所有）
+    function displayPods(data, filterDeployment = '') {
+        contentDisplay.innerHTML = '';
+
+        Object.keys(data).forEach(region => {
+            const regionDiv = document.createElement('div');
+            regionDiv.className = 'region-container';
+            regionDiv.innerHTML = `<h2>${region}</h2>`;
+
+            const zones = data[region];
+            Object.keys(zones).forEach(zone => {
+                const zoneDiv = document.createElement('div');
+                zoneDiv.className = 'zone-container';
+                zoneDiv.innerHTML = `<h3>${zone}</h3>`;
+
+                const racks = zones[zone];
+                Object.keys(racks).forEach(rack => {
+                    const rackDiv = document.createElement('div');
+                    rackDiv.className = 'rack-container';
+                    rackDiv.innerHTML = `<h4>${rack}</h4>`;
+
+                    const hosts = racks[rack];
+                    Object.keys(hosts).forEach(hostname => {
+                        const pods = hosts[hostname];
+                        const hostnameDiv = document.createElement('div');
+                        hostnameDiv.className = 'hostname-container';
+                        hostnameDiv.innerHTML = `<strong>${hostname}</strong>`;
+
+                        pods.forEach(pod => {
+                            if (!filterDeployment || pod.deployment_name === filterDeployment) {
+                                const podDiv = document.createElement('div');
+                                podDiv.className = 'pod';
+                                podDiv.textContent = pod.pod_name;
+                                hostnameDiv.appendChild(podDiv);
+                            }
+                        });
+
+                        rackDiv.appendChild(hostnameDiv);
+                    });
+
+                    zoneDiv.appendChild(rackDiv);
+                });
+
+                regionDiv.appendChild(zoneDiv);
+            });
+
+            contentDisplay.appendChild(regionDiv);
+        });
     }
 
     // 调用函数以首次加载内容
     fetchContent();
 
-    // 刷新按钮
     document.getElementById("run-pod-script").addEventListener("click", () => {
         fetch('/run-pod-script', { method: 'POST' })
             .then(response => response.json())

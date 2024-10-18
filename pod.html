@@ -4,31 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>拓扑展示</title>
-    <link rel="stylesheet" href="pod_style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <button id="run-pod-script">刷新</button>
     <a href="index.html" target="_blank">node拓扑展示</a>
+    <select id="deployment-select">
+        <option value="">选择 Deployment</option>
+    </select>
     <div id="content-display" class="region-container"></div>
     <script src="pod_script.js"></script>
-    <script>
-        // 添加按钮点击事件处理
-        document.getElementById('run-pod-script').addEventListener('click', function() {
-            fetch('/run-pod-script', {
-                method: 'POST',
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log("脚本执行结果:", data);
-                //setTimeout(function() {
-                location.reload();
-            //}, 5000); // 5000毫秒即5秒
-            })
-            .catch((error) => {
-                console.error("发生错误:", error);
-            });
-        });
-        fetchContent();
-    </script>
 </body>
 </html>
