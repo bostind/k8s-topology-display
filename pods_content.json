@@ -82,16 +82,6 @@
             "pod_name": "metrics-server-596b5fd4c-khdfg",
             "hostname": "master01",
             "deployment_name": ""
-          },
-          {
-            "pod_name": "kuboard-etcd-6nvzd",
-            "hostname": "master01",
-            "deployment_name": ""
-          },
-          {
-            "pod_name": "metrics-scraper-7bbfb87b6-pwdjz",
-            "hostname": "master01",
-            "deployment_name": ""
           }
         ]
       },
@@ -118,21 +108,6 @@
           },
           {
             "pod_name": "kube-proxy-2l6lc",
-            "hostname": "node02",
-            "deployment_name": ""
-          },
-          {
-            "pod_name": "kuboard-agent-2-79d64b665d-vm7ff",
-            "hostname": "node02",
-            "deployment_name": ""
-          },
-          {
-            "pod_name": "kuboard-agent-cf4c56574-nzrzx",
-            "hostname": "node02",
-            "deployment_name": ""
-          },
-          {
-            "pod_name": "kuboard-v3-8664f76c6-qlwrt",
             "hostname": "node02",
             "deployment_name": ""
           }

@@ -28,7 +28,7 @@ echo "$nodes" | jq -c '.items[]' | while IFS= read -r node; do
     rack=$(echo "$labels" | jq -r '.rack // "unknown"')
 
     # 获取该节点上所有的 Pods 信息--all-namespaces
-    pods=$(kubectl get pods  --all-namespaces --field-selector spec.nodeName="$hostname",status.phase=Running  -o json )
+    pods=$(kubectl get pods   --all-namespaces  --field-selector spec.nodeName="$hostname",status.phase=Running  -o json )
     if [ $? -ne 0 ]; then
         echo "Error: Failed to get pods information for node $hostname."
         continue
