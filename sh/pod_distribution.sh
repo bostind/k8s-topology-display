@@ -1,5 +1,6 @@
 #!/bin/bash
-
+# 获取命名空间参数，默认为 "default"
+NAMESPACENAME=${1:-kube-system}
 # 输出的 JSON 文件名
 output_file="pods_content.json"
 
@@ -27,52 +28,32 @@ echo "$nodes" | jq -c '.items[]' | while IFS= read -r node; do
     zone=$(echo "$labels" | jq -r '.zone // "unknown"')
     rack=$(echo "$labels" | jq -r '.rack // "unknown"')
 
-    # 获取该节点上所有的 Pods 信息--all-namespaces
-    pods=$(kubectl get pods   --all-namespaces  --field-selector spec.nodeName="$hostname",status.phase=Running  -o json )
+    # 在 pod_distribution.sh 中
+    pods=$(kubectl get pods --namespace="$NAMESPACENAME" --field-selector spec.nodeName="$hostname",status.phase=Running -o json)
+    
     if [ $? -ne 0 ]; then
         echo "Error: Failed to get pods information for node $hostname."
         continue
     fi
     
-     # 检查 pods 是否有内容
-     if [ -z "$pods" ]; then
-         echo "No pods found for node $hostname."
-         exit 0
-     fi
-    
-    
-    PERSISTENT_FILE=$(mktemp)  
-    
-    # 获取该节点上所有的 Pods 信息
-    
-    # 检查 pods 是否有内容
-    if [ -z "$pods" ]; then
-        echo "No pods found for node $hostname."
-        exit 0
-    fi
-    
-    # 输出 pods 信息到持久性文件
-    echo "$pods" > "$PERSISTENT_FILE"
-    
-    # 检查持久性文件是否创建成功
-    if [ ! -f "$PERSISTENT_FILE" ]; then
-        echo "Error: Failed to create persistent file."
-        exit 1
-    fi
-    
     # 使用 jq 提取 pod 信息
-    mapfile -t pod_lines < <(jq -c '.items[]' "$PERSISTENT_FILE")
+    mapfile -t pod_lines < <(echo "$pods" | jq -c '.items[]')
     
     # 初始化 Pod 数组
     pod_array=()
     
-    # 处理每一行
     for pod in "${pod_lines[@]}"; do
         pod_name=$(echo "$pod" | jq -r '.metadata.name')
+        namespace=$(echo "$pod" | jq -r '.metadata.namespace')
         rs_name=$(echo "$pod" | jq -r '.metadata.ownerReferences[] | select(.kind == "ReplicaSet") | .name // empty')
-        deployment_name=$(kubectl get ReplicaSet "$rs_name" -o json | jq -r '.metadata.ownerReferences[] | select(.kind == "Deployment") | .name // empty')
-        pod_array+=("{\"pod_name\": \"$pod_name\", \"hostname\": \"$hostname\", \"deployment_name\": \"$deployment_name\"}")
+    if [[ -n "$rs_name" ]]; then
+        # 在这里添加检查 ReplicaSet 是否存在的逻辑
+        deployment_name=$(kubectl get ReplicaSet "$rs_name" --namespace="$NAMESPACENAME"  -o json | jq -r '.metadata.ownerReferences[] | select(.kind == "Deployment") | .name // empty')
+    else
+        deployment_name="unknown"
+    fi
 
+        pod_array+=("{\"pod_name\": \"$pod_name\", \"hostname\": \"$hostname\", \"namespace\": \"$NAMESPACENAME\", \"deployment_name\": \"$deployment_name\"}")
     done
     
     # 将 Pod 信息数组转为 JSON 格式
