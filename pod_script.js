@@ -1,6 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
     const contentDisplay = document.getElementById('content-display');
-    const deploymentSelect = document.getElementById('deployment-select');
+    const namespaceSelect = document.getElementById('namespace-select'); 
+   // 从服务器获取命名空间内容的函数
+   function fetchNamespaces() {
+    fetch('/api/namespaces') // 从 server.js 提供的 API 获取命名空间内容
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('网络响应不是 OK');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // 填充命名空间选择框
+            data.forEach(namespace => {
+                const option = document.createElement('option');
+                option.value = namespace.namespace; // 设置值为命名空间名称
+                option.textContent = namespace.namespace; // 显示命名空间名称
+                namespaceSelect.appendChild(option); // 添加到下拉框中
+            });
+        })
+        .catch(error => console.error('错误:', error));
+}
 
     // 从服务器获取内容的函数
     function fetchDeploymentOptions() {
@@ -105,6 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 初始加载并填充下拉框
+    fetchNamespaces();
     fetchDeploymentOptions();
     fetchContent(); // 加载内容
 
@@ -122,9 +143,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
-    // 下拉框选择事件
-    deploymentSelect.addEventListener('change', () => {
-        const selectedDeployment = deploymentSelect.value;
-        fetchContent(selectedDeployment); // 根据选择刷新内容
+    // 选择命名空间后重新加载 Pods 数据
+        namespaceSelect.addEventListener('change', () => {
+        fetchContent(namespaceSelect.value); // 根据选择刷新内容
     });
 });

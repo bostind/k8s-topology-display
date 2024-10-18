@@ -1,0 +1,20 @@
+[
+  {
+    "namespace": "default"
+  },
+  {
+    "namespace": "extension-metrics-server"
+  },
+  {
+    "namespace": "kube-node-lease"
+  },
+  {
+    "namespace": "kube-public"
+  },
+  {
+    "namespace": "kube-system"
+  },
+  {
+    "namespace": "test"
+  }
+]

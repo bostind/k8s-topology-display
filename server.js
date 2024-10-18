@@ -8,6 +8,41 @@ const PORT = 3000;
 // 使用静态文件服务
 app.use(express.static(path.join(__dirname)));
 
+function runScripts() {
+    exec('sh/namespace_distribution.sh', (error, stdout, stderr) => {
+        if (error) {
+            console.error(`执行 namespace 脚本错误: ${error.message}`);
+        }
+        if (stderr) {
+            console.error(`namespace 脚本错误输出: ${stderr}`);
+        } else {
+            console.log(`namespace 脚本输出: ${stdout}`);
+        }
+    });
+
+    exec('sh/node_distribution.sh', (error, stdout, stderr) => {
+        if (error) {
+            console.error(`执行节点脚本错误: ${error.message}`);
+        }
+        if (stderr) {
+            console.error(`节点脚本错误输出: ${stderr}`);
+        } else {
+            console.log(`节点脚本输出: ${stdout}`);
+        }
+    });
+
+    exec('sh/pod_distribution.sh', (error, stdout, stderr) => {
+        if (error) {
+            console.error(`执行 Pod 脚本错误: ${error.message}`);
+        }
+        if (stderr) {
+            console.error(`Pod 脚本错误输出: ${stderr}`);
+        } else {
+            console.log(`Pod 脚本输出: ${stdout}`);
+        }
+    });
+}
+
 // 运行节点脚本的 API
 app.post('/run-node-script', (req, res) => {
     exec('sh/node_distribution.sh', (error, stdout, stderr) => {
@@ -54,7 +89,17 @@ app.get('/api/pods', (req, res) => {
         res.json(JSON.parse(data));
     });
 });
+// 获取命名空间内容的 API
+app.get('/api/namespaces', (req, res) => {
+    fs.readFile('namespaces_content.json', 'utf8', (err, data) => {
+        if (err) {
+            return res.status(500).send('文件读取失败');
+        }
+        res.json(JSON.parse(data));
+    });
+});
 // 启动服务器
 app.listen(PORT, () => {
     console.log(`服务器正在运行: http://localhost:${PORT}`);
+    runScripts();
 });
