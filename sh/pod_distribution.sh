@@ -1,6 +1,6 @@
 #!/bin/bash
 # 获取命名空间参数，默认为 "default"
-NAMESPACENAME=${1:-kube-system}
+NAMESPACENAME=${1:-default}
 # 输出的 JSON 文件名
 output_file="pods_content.json"
 

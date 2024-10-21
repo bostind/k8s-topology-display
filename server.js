@@ -67,8 +67,9 @@ app.get('/api/nodes', (req, res) => {
     });
 });
 // 运行 Pod 脚本的 API
-app.post('/run-pod-script', (req, res) => {
-    exec('sh/pod_distribution.sh', (error, stdout, stderr) => {
+app.post('/run-pod-script', express.json(), (req, res) => {
+    const namespace = req.body.namespace || 'default'; // 获取传入的命名空间参数
+    exec(`sh/pod_distribution.sh ${namespace}`, (error, stdout, stderr) => {
         if (error) {
             console.error(`执行错误: ${error.message}`);
             return res.status(500).json({ error: error.message });
@@ -81,14 +82,20 @@ app.post('/run-pod-script', (req, res) => {
         res.json({ output: stdout });
     });
 });
+
+// 获取 Pods 内容的 API，根据命名空间过滤
 app.get('/api/pods', (req, res) => {
     fs.readFile('pods_content.json', 'utf8', (err, data) => {
         if (err) {
             return res.status(500).send('文件读取失败');
         }
-        res.json(JSON.parse(data));
+
+        // 直接返回读取到的内容，无需筛选
+        res.json(JSON.parse(data)); // 返回 JSON 格式的 Pods 数据
     });
 });
+
+
 // 获取命名空间内容的 API
 app.get('/api/namespaces', (req, res) => {
     fs.readFile('namespaces_content.json', 'utf8', (err, data) => {
