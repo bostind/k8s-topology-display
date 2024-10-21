@@ -19,29 +19,17 @@ function runScripts() {
             console.log(`namespace 脚本输出: ${stdout}`);
         }
     });
-
-    exec('sh/node_distribution.sh', (error, stdout, stderr) => {
-        if (error) {
-            console.error(`执行节点脚本错误: ${error.message}`);
-        }
-        if (stderr) {
-            console.error(`节点脚本错误输出: ${stderr}`);
-        } else {
-            console.log(`节点脚本输出: ${stdout}`);
-        }
-    });
-
-    exec('sh/pod_distribution.sh', (error, stdout, stderr) => {
-        if (error) {
-            console.error(`执行 Pod 脚本错误: ${error.message}`);
-        }
-        if (stderr) {
-            console.error(`Pod 脚本错误输出: ${stderr}`);
-        } else {
-            console.log(`Pod 脚本输出: ${stdout}`);
-        }
-    });
 }
+// 获取命名空间内容的 API
+    app.get('/api/namespaces', (req, res) => {
+        fs.readFile('namespaces_content.json', 'utf8', (err, data) => {
+            if (err) {
+                return res.status(500).send('文件读取失败');
+            }
+            res.json(JSON.parse(data));
+        });
+    });
+    
 
 // 运行节点脚本的 API
 app.post('/run-node-script', (req, res) => {
@@ -68,7 +56,7 @@ app.get('/api/nodes', (req, res) => {
 });
 // 运行 Pod 脚本的 API
 app.post('/run-pod-script', express.json(), (req, res) => {
-    const namespace = req.body.namespace || 'default'; // 获取传入的命名空间参数
+    const namespace = req.body.namespace ; // 获取传入的命名空间参数
     exec(`sh/pod_distribution.sh ${namespace}`, (error, stdout, stderr) => {
         if (error) {
             console.error(`执行错误: ${error.message}`);
@@ -96,15 +84,7 @@ app.get('/api/pods', (req, res) => {
 });
 
 
-// 获取命名空间内容的 API
-app.get('/api/namespaces', (req, res) => {
-    fs.readFile('namespaces_content.json', 'utf8', (err, data) => {
-        if (err) {
-            return res.status(500).send('文件读取失败');
-        }
-        res.json(JSON.parse(data));
-    });
-});
+
 // 启动服务器
 app.listen(PORT, () => {
     console.log(`服务器正在运行: http://localhost:${PORT}`);

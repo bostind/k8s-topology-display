@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                             racks[rack].forEach(node => {
                                 const nodeDiv = document.createElement('div');
-                                nodeDiv.className = 'node';
+                                nodeDiv.className = 'hostname-container';
                                 nodeDiv.textContent = node.hostname;
                                 rackDiv.appendChild(nodeDiv);
                             });

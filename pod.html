@@ -13,14 +13,12 @@
         <!-- 命名空间选项将在 JavaScript 中填充 -->
     </select>
     <button id="run-pod-script">获取 Pods</button> <!-- 获取 Pods 的按钮 -->
-    
     <select id="deployment-select">
         <option value="">全部展示</option>
     </select>
-    <button id="fetch-deployments">刷新</button> <!-- 新增按钮 -->
-
+    <div id="selected-deployment-display" class="selected-deployment-display"></div>
     <div id="content-display" class="region-container"></div>
-    
+        
     <script src="pod_script.js"></script>
 </body>
 </html>

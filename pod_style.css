@@ -44,7 +44,7 @@ body {
     flex-direction: column; /* 允许垂直堆叠节点 */
     align-items: center; /* 水平居中 */
 }
-.pod {
+.pod-container {
     padding: 4px;
     background-color: #b2a9af; /* Pod 背景颜色 */
     margin: 2px 0; /* Pod 外边距 */

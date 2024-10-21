@@ -2,11 +2,23 @@ body {
     font-family: Arial, sans-serif;
     padding: 20px;
     background-color: #f3f3e2;
+    display: flex;
+    align-items: center; /* 默认左对齐 */
 }
 
+.selected-deployment-display {
+    font-weight: bold;
+    color: blue;
+    margin-bottom: 10px;
+    padding: 10px; /* 添加内边距 */
+    border: 2px solid blue; /* 添加边框 */
+    border-radius: 5px; /* 圆角效果 */
+    background-color: #f0f8ff; /* 背景颜色，可以根据需要调整 */
+    display: inline-block; /* 使元素宽度仅包裹内容 */
+}
 .region-container {
   
-    border: 1px solid #b0b084;
+    border: 1px solid #201e1f;
     background-color: #f9f9d8;
     margin: 10px;
     padding: 10px;
@@ -34,7 +46,7 @@ body {
     align-items: center; /* 水平居中 */
 }
 
-.node {
+.hostname-container {
     padding: 5px;
     margin: 5px;
     border: 1px solid #7a7ab0;
@@ -46,6 +58,21 @@ body {
     display: flex; /* 使用flex布局 */
     justify-content: center; /* 水平居中 */
     align-items: center; /* 垂直居中 */
+}
+.pod_hostname-container {
+    border: 1px solid #050505;
+    margin: 5px;
+    padding: 10px;
+    flex: 1 0 30%; /* 每个 rack 30% 宽度 */
+    display: flex; /* 使用flex布局 */
+    flex-direction: column; /* 允许垂直堆叠节点 */
+    align-items: center; /* 水平居中 */
+}
+.pod-container {
+    padding: 4px;
+    background-color: #b2a9af; /* Pod 背景颜色 */
+    margin: 2px 0; /* Pod 外边距 */
+    border-radius: 3px; /* 圆角 */
 }
 .region-container h1, .zone-container h2 {
     flex-direction: column; /* 允许垂直堆叠节点 */
