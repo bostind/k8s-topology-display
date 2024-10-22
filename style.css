@@ -5,27 +5,37 @@ body {
     align-items: center; /* 默认左对齐 */
 }
 .container {
+    margin-top: 20px;
     display: flex;
     flex-direction: row; 
     align-items: center; /* 居中对齐 */
 }
 .button-container {
-    margin: 10px 0; /* 按钮的上下间距 */
+    margin: 20px 0; /* 按钮的上下间距 */
 }
-/*
+
 #content-display {
     margin-top: 20px; 
     border: 1px solid #ccc;
     padding: 10px;
     width: 100%;
     max-width: 600px; 
-} */
+} 
+.progress-container {
+    width: 100%; /* 容器宽度 */
+    background-color: #f3f3f3; /* 背景颜色 */
+    border-radius: 5px; /* 边角圆润 */
+    overflow: hidden; /* 确保子元素不超出边界 */
+}
 
-
-
-
+.progress-bar {
+    height: 20px; /* 进度条高度 */
+    width: 0; /* 初始宽度为 0 */
+    background-color: #4caf50; /* 进度条颜色 */
+    transition: width 0.5s; /* 宽度变化的过渡效果 */
+}
 .region-container {
-  
+    margin-top: 20px;
     border: 1px solid #201e1f;
     background-color: #f9f9d8;
     margin: 10px;
@@ -35,6 +45,7 @@ body {
     align-items: center; /* 左对齐 */
 }
 .selected-deployment-display {
+    margin-top: 20px;
     font-weight: bold;
     color: blue;
     margin-bottom: 10px;

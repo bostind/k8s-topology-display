@@ -175,6 +175,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // 刷新按钮处理
     document.getElementById("run-pod-script").addEventListener("click", () => {
         const selectedNamespace = namespaceSelect.value; // 获取选中的命名空间
+        const progressContainer = document.querySelector('.progress-container');
+              progressContainer.style.display = 'block';
+        const progressBar = document.getElementById('progress-bar');
+              progressBar.style.width = '0%';
+             
+              let progress = 0;
+              clearInterval(window.progressInterval);
+              // 模拟进度条增长
+              const interval = setInterval(() => {
+                  if (progress >= 100) {
+                    clearInterval(window.progressInterval); 
+                  } else {
+                      progress++;
+                      progressBar.style.width = progress + '%'; // 更新进度条的宽度
+                  }
+              }, 50); // 每50毫秒增加1%
         fetch('/run-pod-script', {
             method: 'POST',
             headers: {
@@ -186,10 +202,12 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             console.log("脚本执行结果:", data);
             fetchContent(selectedNamespace); // 重新获取内容并更新显示
-            // 不需要使用 location.reload(); 
+            clearInterval(window.progressInterval); 
+            progressBar.style.width = '100%';
         })
         .catch((error) => {
             console.error("发生错误:", error);
+            progressBar.style.width = '0%';
         });
     });
 

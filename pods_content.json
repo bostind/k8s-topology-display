@@ -4,37 +4,19 @@
       "cn-wh-01-04": {
         "master01": [
           {
-            "pod_name": "nginx-deployment01-7dd557996-22fcz",
+            "pod_name": "nginx-deployment01-7dd557996-xqt7z",
             "hostname": "master01",
             "namespace": "default",
             "deployment_name": "nginx-deployment01"
           },
           {
-            "pod_name": "nginx-deployment01-7dd557996-6q55v",
-            "hostname": "master01",
-            "namespace": "default",
-            "deployment_name": "nginx-deployment01"
-          },
-          {
-            "pod_name": "nginx-deployment01-7dd557996-z6pp6",
-            "hostname": "master01",
-            "namespace": "default",
-            "deployment_name": "nginx-deployment01"
-          },
-          {
-            "pod_name": "nginx-deployment02-7dd557996-85dx8",
+            "pod_name": "nginx-deployment02-7dd557996-g5sbz",
             "hostname": "master01",
             "namespace": "default",
             "deployment_name": "nginx-deployment02"
           },
           {
-            "pod_name": "nginx-deployment02-7dd557996-95cgn",
-            "hostname": "master01",
-            "namespace": "default",
-            "deployment_name": "nginx-deployment02"
-          },
-          {
-            "pod_name": "nginx-deployment02-7dd557996-blpm7",
+            "pod_name": "nginx-deployment02-7dd557996-n97pd",
             "hostname": "master01",
             "namespace": "default",
             "deployment_name": "nginx-deployment02"
@@ -42,7 +24,26 @@
         ]
       },
       "cn-wh-01-01": {
-        "node01": []
+        "node01": [
+          {
+            "pod_name": "nginx-deployment01-7dd557996-6vrr7",
+            "hostname": "node01",
+            "namespace": "default",
+            "deployment_name": "nginx-deployment01"
+          },
+          {
+            "pod_name": "nginx-deployment01-7dd557996-9wmwd",
+            "hostname": "node01",
+            "namespace": "default",
+            "deployment_name": "nginx-deployment01"
+          },
+          {
+            "pod_name": "nginx-deployment02-7dd557996-sf5qn",
+            "hostname": "node01",
+            "namespace": "default",
+            "deployment_name": "nginx-deployment02"
+          }
+        ]
       },
       "cn-wh-01-02": {
         "node02": []
