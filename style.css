@@ -2,20 +2,28 @@ body {
     font-family: Arial, sans-serif;
     padding: 20px;
     background-color: #f3f3e2;
-    display: flex;
     align-items: center; /* 默认左对齐 */
 }
-
-.selected-deployment-display {
-    font-weight: bold;
-    color: blue;
-    margin-bottom: 10px;
-    padding: 10px; /* 添加内边距 */
-    border: 2px solid blue; /* 添加边框 */
-    border-radius: 5px; /* 圆角效果 */
-    background-color: #f0f8ff; /* 背景颜色，可以根据需要调整 */
-    display: inline-block; /* 使元素宽度仅包裹内容 */
+.container {
+    display: flex;
+    flex-direction: row; 
+    align-items: center; /* 居中对齐 */
 }
+.button-container {
+    margin: 10px 0; /* 按钮的上下间距 */
+}
+/*
+#content-display {
+    margin-top: 20px; 
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 100%;
+    max-width: 600px; 
+} */
+
+
+
+
 .region-container {
   
     border: 1px solid #201e1f;
@@ -26,7 +34,23 @@ body {
     flex-direction: column; /* 垂直排列区域 */
     align-items: center; /* 左对齐 */
 }
-
+.selected-deployment-display {
+    font-weight: bold;
+    color: blue;
+    margin-bottom: 10px;
+    padding: 10px; /* 添加内边距 */
+    border: 2px solid blue; /* 添加边框 */
+    border-radius: 5px; /* 圆角效果 */
+    background-color: #f0f8ff; /* 背景颜色，可以根据需要调整 */
+    display: inline-block; /* 使元素宽度仅包裹内容 */
+    margin: 10px 0; /* 部署展示区的上下间距 */
+    text-align: center; /* 文本居中对齐 */
+    display: flex; /* 使用 Flexbox */
+    align-items: center; /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+    /*width: 80%;  确保占满父容器的宽度 */
+    
+}
 .zone-container {
     border: 1px solid #a0a0a0; /* 添加边框样式 */
     margin: 5px 0; /* 上下间距 */

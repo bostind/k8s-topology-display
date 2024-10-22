@@ -4,21 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>拓扑展示</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">   
 </head>
 <body>
-    <a href="index.html" target="_blank">node拓扑展示</a>
-    <select id="namespace-select">
-        <option value="">选择命名空间</option>
-        <!-- 命名空间选项将在 JavaScript 中填充 -->
-    </select>
-    <button id="run-pod-script">获取 Pods</button> <!-- 获取 Pods 的按钮 -->
-    <select id="deployment-select">
-        <option value="">全部展示</option>
-    </select>
-    <div id="selected-deployment-display" class="selected-deployment-display"></div>
-    <div id="content-display" class="region-container"></div>
-        
+    <div class="container">
+        <a href="index.html" target="_blank">node拓扑展示</a>
+        <select id="namespace-select">
+            <option value="">选择命名空间</option>
+        </select>
+        <div class="button-container">
+            <button id="run-pod-script">获取 Pods</button>
+        </div>
+        <select id="deployment-select">
+            <option value="">全部展示</option>
+        </select>
+    </div>
+    <div class="region-container"> 
+        <div id="selected-deployment-display" class="selected-deployment-display"></div>
+        <div id="content-display" class="region-container"></div>
+    </div>
     <script src="pod_script.js"></script>
 </body>
 </html>
