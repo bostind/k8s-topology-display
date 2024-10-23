@@ -1,7 +1,7 @@
 {
   "cn-wh": {
     "cn-wh-01": {
-      "cn-wh-01-04": {
+      "cn-wh-01-01": {
         "master01": [
           {
             "pod_name": "nginx-deployment01-7dd557996-xqt7z",
@@ -21,9 +21,7 @@
             "namespace": "default",
             "deployment_name": "nginx-deployment02"
           }
-        ]
-      },
-      "cn-wh-01-01": {
+        ],
         "node01": [
           {
             "pod_name": "nginx-deployment01-7dd557996-6vrr7",

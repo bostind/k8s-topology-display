@@ -52,8 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     Object.keys(zones).forEach(zone => {
                         const zoneDiv = document.createElement('div');
                         zoneDiv.className = 'zone-container';
-                        zoneDiv.innerHTML = `<h3>${zone}</h3>`;
-
+                        zoneDiv.insertAdjacentHTML('afterbegin', `<h3>${zone}</h3>`);
                         const racks = zones[zone];
                         Object.keys(racks).forEach(rack => {
                             const rackDiv = document.createElement('div');
@@ -126,8 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     Object.keys(zones).forEach(zone => {
                         const zoneDiv = document.createElement('div');
                         zoneDiv.className = 'zone-container';
-                        zoneDiv.innerHTML = `<h3>${zone}</h3>`;
-
+                        zoneDiv.insertAdjacentHTML('afterbegin', `<h3>${zone}</h3>`);
                         const racks = zones[zone];
                         Object.keys(racks).forEach(rack => {
                             const rackDiv = document.createElement('div');
