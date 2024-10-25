@@ -24,33 +24,15 @@ body {
 .progress-bar { grid-area: progress-bar; }
 
 @keyframes shadowRolling {
-    0% {
-      box-shadow: 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
-    }
-    12% {
-      box-shadow: 100px 0 #90cf5b, 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
-    }
-    25% {
-      box-shadow: 110px 0 #90cf5b, 100px 0 #90cf5b, 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
-    }
-    36% {
-      box-shadow: 120px 0 #90cf5b, 110px 0 #90cf5b, 100px 0 #90cf5b, 0px 0 rgba(255, 255, 255, 0);
-    }
-    50% {
-      box-shadow: 130px 0 #90cf5b, 120px 0 #90cf5b, 110px 0 #90cf5b, 100px 0 #90cf5b;
-    }
-    62% {
-      box-shadow: 200px 0 rgba(255, 255, 255, 0), 130px 0 #90cf5b, 120px 0 #90cf5b, 110px 0 #90cf5b;
-    }
-    75% {
-      box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 #90cf5b, 120px 0 #90cf5b;
-    }
-    87% {
-      box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 #90cf5b;
-    }
-    100% {
-      box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0);
-    }
+    0%   { box-shadow: 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);}
+    12%  { box-shadow: 100px 0 #90cf5b, 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);}
+    25%  { box-shadow: 110px 0 #90cf5b, 100px 0 #90cf5b, 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0); }
+    36%  { box-shadow: 120px 0 #90cf5b, 110px 0 #90cf5b, 100px 0 #90cf5b, 0px 0 rgba(255, 255, 255, 0); }
+    50%  { box-shadow: 130px 0 #90cf5b, 120px 0 #90cf5b, 110px 0 #90cf5b, 100px 0 #90cf5b;}
+    62%  { box-shadow: 200px 0 rgba(255, 255, 255, 0), 130px 0 #90cf5b, 120px 0 #90cf5b, 110px 0 #90cf5b;}
+    75%  { box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 #90cf5b, 120px 0 #90cf5b; }
+    87%  { box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 #90cf5b;}
+    100% { box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0);}
   }
   
 .progress-bar {
@@ -68,11 +50,8 @@ body {
 }
 .deployment-display {
     margin-top: 20px;
-    
-  
     margin-bottom: 10px;
     padding: 10px; /* 添加内边距 */
-    
     border-radius: 5px; /* 圆角效果 */
     background-color: #129c05db; /* 背景颜色，可以根据需要调整 */
     display: flex; /* 使用 Flexbox */
@@ -83,10 +62,10 @@ body {
 
 
 #content-display {
-  display: grid;  
-  margin-top: 10px; 
-  border: 1px solid #ffffe5;
-  background-color: #ffffe5;
+    display: grid;  
+    margin-top: 10px; 
+    border: 1px solid #ffffe5;
+    background-color: #ffffe5;
     padding: 10px;
     width: 100%;
     max-width: 1200px; 
@@ -104,7 +83,7 @@ body {
 }
 
 .region-container {
-  display: grid; 
+    display: grid; 
     border: 1px solid  #f7e1acc7;
     background-color:  #ffffe5;
     padding: 10px;
@@ -119,31 +98,30 @@ body {
     align-items: start;  /*垂直居中对齐 */
 }
 .region-name{
-  grid-area:region-name; 
+    grid-area:region-name; 
   
 }
 .zone-container{  
-  display: grid;
-  border: 1px solid #fce8e8;
-  background-color: #ffe5e5;
-  grid-template-columns: auto auto auto auto;
-  grid-template-rows: auto;
-  gap: 5px;
-  grid-auto-flow: column;
-  grid-template-areas:
-    "zone-name zone-name zone-name zone-name "
-    "rack-container rack-container rack-container rack-container";
-  justify-items: center; /* 水平居中对齐 */
-  align-items: start;  /*垂直居中对齐 */
-  text-align: center;  /*问题：单rack不局中 */
+    display: grid;
+    border: 1px solid #fce8e8;
+    background-color: #ffe5e5;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto;
+    gap: 5px;
+    grid-auto-flow: column;
+    grid-template-areas:
+      "zone-name zone-name zone-name zone-name "
+      "rack-container rack-container rack-container rack-container";
+    justify-items: center; /* 水平居中对齐 */
+    align-items: start;  /*垂直居中对齐 */
+    text-align: center;  /*问题：单rack不局中 */
 }
 .zone-name {
-  grid-area:zone-name; 
+    grid-area:zone-name; 
   
 }
 .rack-container {
-   
-  background-color: #ccd9ff;
+    background-color: #ccd9ff;
     padding: 10px;
     display: flex; /* 使用 Flexbox */
     flex-direction: column; /* 允许垂直堆叠节点 */
@@ -167,8 +145,8 @@ body {
 }
 
 .pod_hostname-container {
-  border: 1px solid #322d2d;
-  background-color: #ebe2e0;
+    border: 1px solid #322d2d;
+    background-color: #ebe2e0;
     padding: 10px;
     display: flex; /* 使用flex布局 */
     flex-direction: column; /* 允许垂直堆叠节点 */
