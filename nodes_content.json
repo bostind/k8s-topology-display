@@ -7,6 +7,9 @@
         },
         {
           "hostname": "node01"
+        },
+        {
+          "hostname": "node03"
         }
       ],
       "cn-wh-01-02": [
@@ -29,15 +32,6 @@
       "cn-wh-02-04": [
         {
           "hostname": "node06"
-        }
-      ]
-    }
-  },
-  "cn-sz": {
-    "cn-sz-01": {
-      "cn-sz-01-01": [
-        {
-          "hostname": "node03"
         }
       ]
     }
