@@ -8,7 +8,8 @@
 </head>
 <body>
     <div class="container">
-        <a href="index.html" target="_blank">node拓扑展示</a>
+        <button id="run-namespace-script" class="run-namespace-script">刷新</button>
+        <a href="index.html" target="_blank" class="link">node拓扑展示</a>
         <select id="namespace-select">
             <option value="">选择命名空间</option>
         </select>
@@ -18,13 +19,17 @@
         <select id="deployment-select">
             <option value="">全部展示</option>
         </select>
-        <div class="progress-container" style="display: none;">
-            <div class="progress-bar" id="progress-bar"></div>
-        </div>
+        <div class="progress-bar hidden" id="progress-bar"></div>
     </div>
+    <!-- 
     <div class="region-container"> 
-        <div id="selected-deployment-display" class="selected-deployment-display"></div>
+        <div id="deployment-display" class="deployment-display"></div>
         <div id="content-display" class="region-container"></div>
+    </div>
+    -->
+    <div class="region-container"> 
+        <div id="deployment-display" class="deployment-display"></div>
+        <div id="content-display" class="content-display"></div>
     </div>
     <script src="pod_script.js"></script>
 </body>

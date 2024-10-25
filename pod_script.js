@@ -14,8 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then(data => {
                 // 填充命名空间选择框
+                const namespaceSelect = document.getElementById('namespace-select');
+                namespaceSelect.innerHTML = ''; // 清空之前的选项
                 data.forEach(namespace => {
                     const option = document.createElement('option');
+                    option.innerHTML = ''; // 清空之前的选项
                     option.value = namespace.namespace; // 设置值为命名空间名称
                     option.textContent = namespace.namespace; // 显示命名空间名称
                     namespaceSelect.appendChild(option); // 添加到下拉框中
@@ -46,13 +49,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 Object.keys(data).forEach(region => {
                     const regionDiv = document.createElement('div');
                     regionDiv.className = 'region-container';
-                    regionDiv.innerHTML = `<h2>${region}</h2>`;
-
+                    //regionDiv.innerHTML = `<h1>${region}</h1>`;
+                    const regionName = document.createElement('h1');
+                    regionName.className = 'region-name'; // 设置 region名称的类
+                    regionName.textContent = region; // 设置 region 名称的文本内容
                     const zones = data[region];
+                    regionDiv.appendChild(regionName);
+
                     Object.keys(zones).forEach(zone => {
                         const zoneDiv = document.createElement('div');
                         zoneDiv.className = 'zone-container';
-                        zoneDiv.insertAdjacentHTML('afterbegin', `<h3>${zone}</h3>`);
+                        // zoneDiv.innerHTML = `${zone}`;
+                        const zoneName = document.createElement('h2');
+                              zoneName.className = 'zone-name'; // 设置 zone 名称的类
+                              zoneName.textContent = zone; // 设置 zone 名称的文本内容
+
+                              // 将 zone 名称元素添加到 zoneDiv 中
+                              zoneDiv.appendChild(zoneName);
+
                         const racks = zones[zone];
                         Object.keys(racks).forEach(rack => {
                             const rackDiv = document.createElement('div');
@@ -119,13 +133,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 Object.keys(data).forEach(region => {
                     const regionDiv = document.createElement('div');
                     regionDiv.className = 'region-container';
-                    regionDiv.innerHTML = `<h2>${region}</h2>`;
+                    //regionDiv.innerHTML = `<h1>${region}</h1>`;
+                    const regionName = document.createElement('h1');
+                    regionName.className = 'region-name'; // 设置 region名称的类
+                    regionName.textContent = region; // 设置 region 名称的文本内容
+                    regionDiv.appendChild(regionName);
 
                     const zones = data[region];
                     Object.keys(zones).forEach(zone => {
                         const zoneDiv = document.createElement('div');
                         zoneDiv.className = 'zone-container';
-                        zoneDiv.insertAdjacentHTML('afterbegin', `<h3>${zone}</h3>`);
+                        // zoneDiv.innerHTML = `${zone}`;
+                        const zoneName = document.createElement('h2');
+                              zoneName.className = 'zone-name'; // 设置 zone 名称的类
+                              zoneName.textContent = zone; // 设置 zone 名称的文本内容
+
+                              // 将 zone 名称元素添加到 zoneDiv 中
+                              zoneDiv.appendChild(zoneName);
+
                         const racks = zones[zone];
                         Object.keys(racks).forEach(rack => {
                             const rackDiv = document.createElement('div');
@@ -170,25 +195,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // 初始加载命名空间
     fetchNamespaces();
 
-    // 刷新按钮处理
+    // 获取pod按钮处理
     document.getElementById("run-pod-script").addEventListener("click", () => {
         const selectedNamespace = namespaceSelect.value; // 获取选中的命名空间
-        const progressContainer = document.querySelector('.progress-container');
-              progressContainer.style.display = 'block';
-        const progressBar = document.getElementById('progress-bar');
-              progressBar.style.width = '0%';
-             
-              let progress = 0;
-              clearInterval(window.progressInterval);
-              // 模拟进度条增长
-              const interval = setInterval(() => {
-                  if (progress >= 100) {
-                    clearInterval(window.progressInterval); 
-                  } else {
-                      progress++;
-                      progressBar.style.width = progress + '%'; // 更新进度条的宽度
-                  }
-              }, 50); // 每50毫秒增加1%
+        const progressBar = document.querySelector('.progress-bar');
+    progressBar.classList.remove('hidden'); // 显示动画
         fetch('/run-pod-script', {
             method: 'POST',
             headers: {
@@ -200,8 +211,9 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             console.log("脚本执行结果:", data);
             fetchContent(selectedNamespace); // 重新获取内容并更新显示
-            clearInterval(window.progressInterval); 
-            progressBar.style.width = '100%';
+            clearInterval(window.progressInterval);   
+            const progressBar = document.querySelector('.progress-bar');
+                 progressBar.classList.add('hidden'); // 隐藏动画   
         })
         .catch((error) => {
             console.error("发生错误:", error);
@@ -209,7 +221,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-
+    // 刷新按钮处理
+    document.getElementById('run-namespace-script').addEventListener('click', function() {
+        fetch('/run-namespace-script', {
+            method: 'POST',
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('执行脚本失败');
+            }
+            return response.json();
+        })
+        .then(() => {
+            // 脚本执行成功后，获取 namespaces_content.json
+            return fetch('/api/namespaces');
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('获取数据失败');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // 调用专门的函数来更新下拉列表
+            fetchNamespaces(data);
+        })
+        .catch(error => {
+            console.error('错误:', error);
+        });
+    });
     // 选择命名空间后重新加载 Pods 数据
     namespaceSelect.addEventListener('change', () => {
         fetchContent(namespaceSelect.value); // 根据选择刷新内容
@@ -218,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 选择 Deployment 后更新展示
     deploymentSelect.addEventListener('change', () => {
         const selectedDeployment = deploymentSelect.value;
-        document.getElementById("selected-deployment-display").textContent = selectedDeployment ? `${selectedDeployment}` : ''; // 更新显示
+        document.getElementById("deployment-display").textContent = selectedDeployment ? `${selectedDeployment}` : ''; // 更新显示
         fetchPodsData(namespaceSelect.value, selectedDeployment); // 根据选择刷新内容，传递命名空间和 Deployment
     });
 });

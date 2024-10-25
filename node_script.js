@@ -10,14 +10,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 Object.keys(data).forEach(region => {
                     const regionDiv = document.createElement('div');
                     regionDiv.className = 'region-container';
-                    regionDiv.innerHTML = `<h1>${region}</h1>`;
+                    //regionDiv.innerHTML = `<h1>${region}</h1>`;
+                    const regionName = document.createElement('h1');
+                    regionName.className = 'region-name'; // 设置 region名称的类
+                    regionName.textContent = region; // 设置 region 名称的文本内容
+
+                    // 将 region名称元素添加到 regionDiv 中
+                    regionDiv.appendChild(regionName);
 
                     // 获取区
                     const zones = data[region];
                     Object.keys(zones).forEach(zone => {
                         const zoneDiv = document.createElement('div');
                         zoneDiv.className = 'zone-container';
-                        zoneDiv.innerHTML = `<h2>${zone}</h2>`;
+                       // zoneDiv.innerHTML = `${zone}`;
+                        const zoneName = document.createElement('h2');
+                              zoneName.className = 'zone-name'; // 设置 zone 名称的类
+                              zoneName.textContent = zone; // 设置 zone 名称的文本内容
+
+                              // 将 zone 名称元素添加到 zoneDiv 中
+                              zoneDiv.appendChild(zoneName);
 
                         const racks = zones[zone];
                         Object.keys(racks).forEach(rack => {

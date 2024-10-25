@@ -20,6 +20,21 @@ function runScripts() {
         }
     });
 }
+
+app.post('/run-namespace-script', (req, res) => {
+    exec('sh/namespace_distribution.sh', (error, stdout, stderr) => {
+        if (error) {
+            console.error(`执行错误: ${error.message}`);
+            return res.status(500).json({ error: error.message });
+        }
+        if (stderr) {
+            console.error(`错误输出: ${stderr}`);
+            return res.status(500).json({ error: stderr });
+        }
+        console.log(stdout);
+        res.json({ output: stdout });
+    });
+});
 // 获取命名空间内容的 API
     app.get('/api/namespaces', (req, res) => {
         fs.readFile('namespaces_content.json', 'utf8', (err, data) => {
