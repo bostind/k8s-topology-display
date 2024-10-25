@@ -3,15 +3,23 @@ body {
     padding: 10px;
     background-color: #ffffe5;
 }
+.title {
+  font-size: 24px; /* 字体大小 */
+  font-family: 'Arial', sans-serif; /* 字体类型 */
+  color: #000000; /* 字体颜色 */
+  text-align: center; /* 水平居中 */
+  margin-bottom: 20px; /* 下边距 */
+  font-weight: bold;
+}
 
 .container {  
     display: grid;
     grid-template-columns: 100px 100px max-content 100px max-content;
-    grid-template-rows: 30px 48px;
-    gap: 15px;
+    grid-template-rows: 30px;
+    gap: 10px;
     grid-auto-flow: row;
     grid-template-areas:
-      "run-namespace-script link namespace-select button-container deployment-select "
+      "link run-namespace-script  namespace-select button-container deployment-select "
       "progress-bar progress-bar progress-bar progress-bar progress-bar";
     justify-items: center; /* 水平居中对齐 */
     align-items: center; /* 垂直居中对齐 */
