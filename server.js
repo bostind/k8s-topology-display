@@ -69,7 +69,8 @@ app.get('/api/nodes', (req, res) => {
         res.json(JSON.parse(data));
     });
 });
-app.post('/cluster_infot', (req, res) => {
+
+app.post('/cluster-info', (req, res) => {
     exec('sh/cluster_info.sh', (error, stdout, stderr) => {
         if (error) {
             console.error(`执行错误: ${error.message}`);

@@ -5,25 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>集群信息</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-    }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-    }
-    th, td {
-        border: 1px solid #ccc;
-        padding: 8px;
-        text-align: left;
-    }
-    th {
-        background-color: #f2f2f2;
-    }
-</style>
     <link rel="icon" href="image/favicon.ico" type="image/icon">
 </head>
 <body>
@@ -32,9 +13,8 @@
         <li><a href="node.html">Node拓扑</a></li>
         <li><a href="pod.html">Pod拓扑</a></li>
     </ul>
-    <button id="cluster_info">刷新</button>
-    <h1>Kubernetes 集群信息</h1>
-    <div id="content-display" class="cluster-container">
+    <button id="cluster-info">刷新</button>
+    <div id="cluster-display" class="cluster-container">
         <h2>基本信息</h2>
         <p>集群版本: <strong id="cluster-version"></strong></p>
         <p>节点数量: <strong id="node-count"></strong></p>
@@ -53,23 +33,5 @@
         </table>
     </div>
     <script src="cluster_script.js"></script>
-    <script>
-        // 添加按钮点击事件处理
-        document.getElementById('cluster_info').addEventListener('click', function() {
-            fetch('/cluster_info', {
-                method: 'POST',
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log("脚本执行结果:", data);
-                //setTimeout(function() {
-                location.reload();
-            //}, 5000); // 5000毫秒即5秒
-            })
-            .catch((error) => {
-                console.error("发生错误:", error);
-            });
-        });
-    </script>
 </body>
 </html>
