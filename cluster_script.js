@@ -37,6 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     document.getElementById('cluster-info').addEventListener('click', function() {
+        const progressBar = document.querySelector('.progress-bar');
+        progressBar.classList.remove('hidden'); // 显示动画
         fetch('/cluster-info', {
             method: 'POST',
         })
@@ -45,6 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error('执行脚本失败');
             }
             fetchContent()
+            const progressBar = document.querySelector('.progress-bar');
+                 progressBar.classList.add('hidden'); // 隐藏动画  
         })
         .catch(error => {
             console.error('错误:', error);

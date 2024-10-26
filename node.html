@@ -14,11 +14,14 @@
         <li><a href="pod.html">Pod拓扑</a></li>
     </ul>
     <button id="run-node-script">刷新</button>
+    <div class="progress-bar hidden" id="progress-bar"></div>
     <div id="content-display" class="region-container"></div>
     <script src="node_script.js"></script>
     <script>
         // 添加按钮点击事件处理
         document.getElementById('run-node-script').addEventListener('click', function() {
+            const progressBar = document.querySelector('.progress-bar');
+        progressBar.classList.remove('hidden'); // 显示动画
             fetch('/run-node-script', {
                 method: 'POST',
             })
@@ -27,6 +30,8 @@
                 console.log("脚本执行结果:", data);
                 //setTimeout(function() {
                 location.reload();
+                const progressBar = document.querySelector('.progress-bar');
+                 progressBar.classList.add('hidden'); // 隐藏动画  
             //}, 5000); // 5000毫秒即5秒
             })
             .catch((error) => {

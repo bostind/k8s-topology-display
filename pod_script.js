@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 // 清空之前的内容
                 contentDisplay.innerHTML = '';
-                deploymentSelect.innerHTML = '<option value="">全部展示</option>'; // 清空部署下拉框
+                deploymentSelect.innerHTML = '<option value="">全部拓扑</option>'; // 清空部署下拉框
 
                 const deployments = new Set(); // 存储该命名空间下的 Deployments
 
@@ -218,12 +218,13 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch((error) => {
             console.error("发生错误:", error);
-            progressBar.style.width = '0%';
         });
     });
 
     // 刷新按钮处理
     document.getElementById('run-namespace-script').addEventListener('click', function() {
+        const progressBar = document.querySelector('.progress-bar');
+        progressBar.classList.remove('hidden'); // 显示动画
         fetch('/run-namespace-script', {
             method: 'POST',
         })
@@ -236,20 +237,26 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(() => {
             // 脚本执行成功后，获取 namespaces_content.json
             return fetch('/api/namespaces');
+            
         })
         .then(response => {
             if (!response.ok) {
                 throw new Error('获取数据失败');
             }
             return response.json();
+            
         })
         .then(data => {
             // 调用专门的函数来更新下拉列表
             fetchNamespaces(data);
+            const progressBar = document.querySelector('.progress-bar');
+            progressBar.classList.add('hidden'); // 隐藏动画 
         })
         .catch(error => {
             console.error('错误:', error);
         });
+        
+         progressBar.classList.add('hidden'); // 隐藏动画 
     });
     // 选择命名空间后重新加载 Pods 数据
     namespaceSelect.addEventListener('change', () => {

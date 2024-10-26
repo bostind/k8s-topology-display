@@ -2,6 +2,7 @@
   {
     "namespace": "default",
     "deployments": [
+      "nginx-deployment01",
       "nginx-deployment02"
     ]
   },

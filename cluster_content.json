@@ -6,8 +6,8 @@
   "详细信息": {
     "default": {
       "命名空间": "default",
-      "部署数量": 1,
-      "Pod数量": 5
+      "部署数量": 2,
+      "Pod数量": 8
     },
     "extension-metrics-server": {
       "命名空间": "extension-metrics-server",
