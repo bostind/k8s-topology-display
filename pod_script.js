@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // 填充命名空间选择框
                 const namespaceSelect = document.getElementById('namespace-select');
                 namespaceSelect.innerHTML = ''; // 清空之前的选项
+                namespaceSelect.innerHTML = '<option value="">选择命名空间</option>';
                 data.forEach(namespace => {
                     const option = document.createElement('option');
                     option.innerHTML = ''; // 清空之前的选项

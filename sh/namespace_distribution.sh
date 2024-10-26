@@ -26,8 +26,9 @@ for namespace in $(echo "$namespaces" | jq -r '.items[].metadata.name'); do
        deployment_names+=($deployment)
     done
 
-   
-namespace_array+=("{\"namespace\": \"$namespace\", \"deployments\": [$(printf '"%s",' "${deployment_names[@]}" | sed 's/,$//')]}") 
+    if [ ${#deployment_names[@]} -gt 0 ]; then
+        namespace_array+=("{\"namespace\": \"$namespace\", \"deployments\": [$(printf '"%s",' "${deployment_names[@]}" | sed 's/,$//')]}") 
+    fi
 
 done
 

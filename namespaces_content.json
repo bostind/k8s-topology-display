@@ -2,26 +2,7 @@
   {
     "namespace": "default",
     "deployments": [
-      "nginx-deployment01",
       "nginx-deployment02"
-    ]
-  },
-  {
-    "namespace": "extension-metrics-server",
-    "deployments": [
-      ""
-    ]
-  },
-  {
-    "namespace": "kube-node-lease",
-    "deployments": [
-      ""
-    ]
-  },
-  {
-    "namespace": "kube-public",
-    "deployments": [
-      ""
     ]
   },
   {
@@ -30,24 +11,6 @@
       "calico-kube-controllers",
       "coredns",
       "metrics-server"
-    ]
-  },
-  {
-    "namespace": "test",
-    "deployments": [
-      ""
-    ]
-  },
-  {
-    "namespace": "test0001",
-    "deployments": [
-      ""
-    ]
-  },
-  {
-    "namespace": "test0002",
-    "deployments": [
-      ""
     ]
   }
 ]
