@@ -2,8 +2,64 @@
   "cn-wh": {
     "cn-wh-01": {
       "cn-wh-01-01": {
-        "master01": [],
-        "node01": [],
+        "master01": [
+          {
+            "pod_name": "nginx-deployment01-7dd557996-dxrwm",
+            "hostname": "master01",
+            "namespace": "default",
+            "deployment_name": "nginx-deployment01"
+          },
+          {
+            "pod_name": "nginx-deployment01-7dd557996-gm54c",
+            "hostname": "master01",
+            "namespace": "default",
+            "deployment_name": "nginx-deployment01"
+          },
+          {
+            "pod_name": "nginx-deployment01-7dd557996-xqt7z",
+            "hostname": "master01",
+            "namespace": "default",
+            "deployment_name": "nginx-deployment01"
+          },
+          {
+            "pod_name": "nginx-deployment02-7dd557996-g5sbz",
+            "hostname": "master01",
+            "namespace": "default",
+            "deployment_name": "nginx-deployment02"
+          },
+          {
+            "pod_name": "nginx-deployment02-7dd557996-j9vjn",
+            "hostname": "master01",
+            "namespace": "default",
+            "deployment_name": "nginx-deployment02"
+          },
+          {
+            "pod_name": "nginx-deployment02-7dd557996-n97pd",
+            "hostname": "master01",
+            "namespace": "default",
+            "deployment_name": "nginx-deployment02"
+          }
+        ],
+        "node01": [
+          {
+            "pod_name": "nginx-deployment01-7dd557996-6vrr7",
+            "hostname": "node01",
+            "namespace": "default",
+            "deployment_name": "nginx-deployment01"
+          },
+          {
+            "pod_name": "nginx-deployment01-7dd557996-9wmwd",
+            "hostname": "node01",
+            "namespace": "default",
+            "deployment_name": "nginx-deployment01"
+          },
+          {
+            "pod_name": "nginx-deployment02-7dd557996-sf5qn",
+            "hostname": "node01",
+            "namespace": "default",
+            "deployment_name": "nginx-deployment02"
+          }
+        ],
         "node03": []
       },
       "cn-wh-01-02": {
