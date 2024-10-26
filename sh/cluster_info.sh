@@ -41,4 +41,4 @@ JSON_OUTPUT="${JSON_OUTPUT%,}}}"
  echo "$JSON_OUTPUT" | jq .> "$OUTPUT_FILE"
 
 # 提示完成
-echo "集群信息已输出到 $OUTPUT_FILE"
+echo "Generated $OUTPUT_FILE successfully!"

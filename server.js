@@ -16,7 +16,7 @@ function runScripts() {
         if (stderr) {
             console.error(`namespace 脚本错误输出: ${stderr}`);
         } else {
-            console.log(`namespace 脚本输出: ${stdout}`);
+            console.log(`${stdout}`);
         }
     });
 }
