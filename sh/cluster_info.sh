@@ -24,11 +24,22 @@ fi
 
 # 遍历命名空间
 for NAMESPACE in $NAMESPACE_NAMES; do
-    # 获取该命名空间中的部署数量和名称
-    DEPLOYMENT_INFO=$(kubectl get deployments -n $NAMESPACE -o json 2>/dev/null | jq -r '.items[] | "\(.metadata.name)"')
-    DEPLOYMENT_COUNT=$(echo "$DEPLOYMENT_INFO"| grep -v '^$'  | wc -l)
-    POD_COUNT=$(kubectl get pods -n $NAMESPACE --field-selector=status.phase=Running 2>/dev/null | grep -v '^$' | wc -l)
+    # 检查命名空间是否有资源，默认为0
+    DEPLOYMENT_COUNT=0
+    POD_COUNT=0
+
+    # 检查是否有部署
+    DEPLOYMENT_INFO=$(kubectl get deployments -n $NAMESPACE --no-headers 2>/dev/null)
+    if [ -n "$DEPLOYMENT_INFO" ]; then
+        DEPLOYMENT_COUNT=$(echo "$DEPLOYMENT_INFO" | wc -l)
+    fi
+
+    # 检查是否有正在运行的 Pod
+    POD_COUNT=$(kubectl get pods -n $NAMESPACE --field-selector=status.phase=Running --no-headers 2>/dev/null | wc -l)
+
+    # 创建命名空间的信息 JSON
     DEPLOYMENT_JSON="{\"命名空间\":\"$NAMESPACE\",\"部署数量\":$DEPLOYMENT_COUNT,\"Pod数量\":$POD_COUNT}"
+
     # 将命名空间信息添加到 JSON 输出
     JSON_OUTPUT+="\"$NAMESPACE\":$DEPLOYMENT_JSON,"
 done
@@ -37,8 +48,7 @@ done
 JSON_OUTPUT="${JSON_OUTPUT%,}}}"
 
 # 格式化 JSON 输出并保存到文件
-#echo "$JSON_OUTPUT" > "$OUTPUT_FILE"
- echo "$JSON_OUTPUT" | jq .> "$OUTPUT_FILE"
+echo "$JSON_OUTPUT" | jq . > "$OUTPUT_FILE"
 
 # 提示完成
 echo "Generated $OUTPUT_FILE successfully!"

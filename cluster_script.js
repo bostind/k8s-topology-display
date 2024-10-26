@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     row.insertCell(1).textContent = data["详细信息"][namespace]["部署数量"];
                     row.insertCell(2).textContent = data["详细信息"][namespace]["Pod数量"];
                 }
+                
             })
             .catch(error => {
                 console.error('加载内容时出错:', error);

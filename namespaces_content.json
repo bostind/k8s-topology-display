@@ -43,5 +43,11 @@
     "deployments": [
       ""
     ]
+  },
+  {
+    "namespace": "test0002",
+    "deployments": [
+      ""
+    ]
   }
 ]
