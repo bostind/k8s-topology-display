@@ -3,22 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Node拓扑展示</title>
+    <title>集群信息</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    th, td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
     <link rel="icon" href="image/favicon.ico" type="image/icon">
 </head>
 <body>
-    <div class="title">
-        <h0 class="title">Node拓扑展示</h0>
+    <ul>
+        <li><a class="active" href="index.html">主页</a></li>
+        <li><a href="node.html">Node拓扑</a></li>
+        <li><a href="pod.html">Pod拓扑</a></li>
+    </ul>
+    <button id="cluster_info">刷新</button>
+    <h1>Kubernetes 集群信息</h1>
+    <div id="content-display" class="cluster-container">
+        <h2>基本信息</h2>
+        <p>集群版本: <strong id="cluster-version"></strong></p>
+        <p>节点数量: <strong id="node-count"></strong></p>
+    
+        <h2>详细信息</h2>
+        <table id="namespace-table">
+            <thead>
+                <tr>
+                    <th>命名空间</th>
+                    <th>部署数量</th>
+                    <th>Pod数量</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
     </div>
-    <button id="run-node-script">刷新</button>
-    <a href="pod.html" target="_blank">pod拓扑展示</a>
-    <div id="content-display" class="region-container"></div>
-    <script src="node_script.js"></script>
+    <script src="cluster_script.js"></script>
     <script>
         // 添加按钮点击事件处理
-        document.getElementById('run-node-script').addEventListener('click', function() {
-            fetch('/run-node-script', {
+        document.getElementById('cluster_info').addEventListener('click', function() {
+            fetch('/cluster_info', {
                 method: 'POST',
             })
             .then(response => response.json())

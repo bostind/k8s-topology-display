@@ -1,0 +1,38 @@
+{
+  "基本信息": {
+    "集群版本": "v1.30.4",
+    "节点数量": 7
+  },
+  "详细信息": {
+    "default": {
+      "命名空间": "default",
+      "部署数量": 2,
+      "Pod数量": 10
+    },
+    "extension-metrics-server": {
+      "命名空间": "extension-metrics-server",
+      "部署数量": 0,
+      "Pod数量": 0
+    },
+    "kube-node-lease": {
+      "命名空间": "kube-node-lease",
+      "部署数量": 0,
+      "Pod数量": 0
+    },
+    "kube-public": {
+      "命名空间": "kube-public",
+      "部署数量": 0,
+      "Pod数量": 0
+    },
+    "kube-system": {
+      "命名空间": "kube-system",
+      "部署数量": 3,
+      "Pod数量": 23
+    },
+    "test": {
+      "命名空间": "test",
+      "部署数量": 0,
+      "Pod数量": 0
+    }
+  }
+}

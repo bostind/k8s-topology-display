@@ -3,15 +3,36 @@ body {
     padding: 10px;
     background-color: #ffffe5;
 }
-.title {
-  font-size: 24px; /* 字体大小 */
-  font-family: 'Arial', sans-serif; /* 字体类型 */
-  color: #000000; /* 字体颜色 */
-  text-align: center; /* 水平居中 */
-  margin-bottom: 20px; /* 下边距 */
-  font-weight: bold;
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
 }
 
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+li a.active {
+    color: white;
+    background-color: #4CAF50;
+}
 .container {  
     display: grid;
     grid-template-columns: 100px 100px max-content 100px max-content;

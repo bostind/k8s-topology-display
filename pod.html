@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pod拓扑展示</title>
+    <title>Pod拓扑</title>
     <link rel="stylesheet" href="style.css">  
     <link rel="icon" href="image/favicon.ico" type="image/icon"> 
     
 </head>
 <body>
-    <div class="title">
-    <h0>Pod拓扑展示</h0>
-    </div>
+    <ul>
+        <li><a href="index.html">主页</a></li>
+        <li><a href="node.html">Node拓扑</a></li>
+        <li><a class="active" href="pod.html">Pod拓扑</a></li>
+    </ul>
     <div class="container">
         <button id="run-namespace-script" class="run-namespace-script">刷新</button>
         <a href="index.html" target="_blank" class="link">主页</a>
@@ -22,7 +24,7 @@
             <button id="run-pod-script">获取 Pods</button>
         </div>
         <select id="deployment-select">
-            <option value="">全部展示</option>
+            <option value="">全部拓扑</option>
         </select>
         <div class="progress-bar hidden" id="progress-bar"></div>
     </div>
