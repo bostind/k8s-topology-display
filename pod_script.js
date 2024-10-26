@@ -244,11 +244,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error('获取数据失败');
             }
             return response.json();
-            
         })
         .then(data => {
             // 调用专门的函数来更新下拉列表
             fetchNamespaces(data);
+            
             const progressBar = document.querySelector('.progress-bar');
             progressBar.classList.add('hidden'); // 隐藏动画 
         })
