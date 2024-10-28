@@ -10,7 +10,7 @@ K8S_VERSION=$(kubectl version | grep "Server" | awk '{print $3}')
 NODE_COUNT=$(kubectl get nodes --no-headers | grep -v '^$' | wc -l)
 
 # 将基本信息存入 JSON 对象
-JSON_OUTPUT="{\"基本信息\":{\"集群版本\":\"$K8S_VERSION\",\"节点数量\":$NODE_COUNT},\"详细信息\":{"
+JSON_OUTPUT="{\"集群信息\":{\"集群版本\":\"$K8S_VERSION\",\"节点数量\":$NODE_COUNT},\"资源信息\":{"
 
 # 获取命名空间信息
 NAMESPACE_NAMES=$(kubectl get namespaces -o custom-columns=:metadata.name)
