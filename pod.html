@@ -14,14 +14,12 @@
         <li><a href="node.html">Node拓扑</a></li>
         <li><a class="active" href="pod.html">Pod拓扑</a></li>
     </ul>
+    <button id="run-namespace-script" class="run-namespace-script">刷新</button>
     <div class="container">
-        <button id="run-namespace-script" class="run-namespace-script">刷新</button>
-        
         <select id="namespace-select" multiple="multiple">
             <option value="">选择命名空间</option>
         </select>
- 
-        <select id="deployment-select">
+        <select id="deployment-select" multiple="multiple">
             <option value="">全部拓扑</option>
         </select>
         <div class="progress-bar hidden" id="progress-bar"></div>

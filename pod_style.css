@@ -38,8 +38,8 @@ li a.active {
 
 .container {  
     display: grid;
-    grid-template-columns:100px max-content 100px max-content;
-    grid-template-rows: 30px;
+    grid-template-columns:max-content max-content;
+    grid-template-rows: 60px;
     gap: 10px;
     grid-auto-flow: row;
     grid-template-areas:

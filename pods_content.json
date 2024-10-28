@@ -4,38 +4,158 @@
       "cn-wh-a-01": {
         "master01": [
           {
-            "pod_name": "nginx-deployment01-7dd557996-2qsln",
+            "pod_name": "calico-kube-controllers-564985c589-4x26t",
             "hostname": "master01",
-            "namespace": "test0001",
-            "deployment_name": "nginx-deployment01"
+            "namespace": "kube-system",
+            "deployment_name": "calico-kube-controllers"
           },
           {
-            "pod_name": "nginx-deployment01-7dd557996-bkjmq",
+            "pod_name": "calico-node-5n7zr",
             "hostname": "master01",
-            "namespace": "test0001",
-            "deployment_name": "nginx-deployment01"
+            "namespace": "kube-system",
+            "deployment_name": "unknown"
           },
           {
-            "pod_name": "nginx-deployment01-7dd557996-f7dbw",
+            "pod_name": "coredns-55cb58b774-2m7wj",
             "hostname": "master01",
-            "namespace": "test0001",
-            "deployment_name": "nginx-deployment01"
+            "namespace": "kube-system",
+            "deployment_name": "coredns"
+          },
+          {
+            "pod_name": "coredns-55cb58b774-hrn5l",
+            "hostname": "master01",
+            "namespace": "kube-system",
+            "deployment_name": "coredns"
+          },
+          {
+            "pod_name": "etcd-master01",
+            "hostname": "master01",
+            "namespace": "kube-system",
+            "deployment_name": "unknown"
+          },
+          {
+            "pod_name": "kube-apiserver-master01",
+            "hostname": "master01",
+            "namespace": "kube-system",
+            "deployment_name": "unknown"
+          },
+          {
+            "pod_name": "kube-controller-manager-master01",
+            "hostname": "master01",
+            "namespace": "kube-system",
+            "deployment_name": "unknown"
+          },
+          {
+            "pod_name": "kube-proxy-bvcbk",
+            "hostname": "master01",
+            "namespace": "kube-system",
+            "deployment_name": "unknown"
+          },
+          {
+            "pod_name": "kube-scheduler-master01",
+            "hostname": "master01",
+            "namespace": "kube-system",
+            "deployment_name": "unknown"
+          },
+          {
+            "pod_name": "metrics-server-596b5fd4c-khdfg",
+            "hostname": "master01",
+            "namespace": "kube-system",
+            "deployment_name": "metrics-server"
           }
         ]
       },
       "cn-wh-a-02": {
-        "node01": [],
-        "node02": []
+        "node01": [
+          {
+            "pod_name": "calico-node-hdqsc",
+            "hostname": "node01",
+            "namespace": "kube-system",
+            "deployment_name": "unknown"
+          },
+          {
+            "pod_name": "kube-proxy-qbq7g",
+            "hostname": "node01",
+            "namespace": "kube-system",
+            "deployment_name": "unknown"
+          }
+        ],
+        "node02": [
+          {
+            "pod_name": "calico-node-5xgf6",
+            "hostname": "node02",
+            "namespace": "kube-system",
+            "deployment_name": "unknown"
+          },
+          {
+            "pod_name": "kube-proxy-2l6lc",
+            "hostname": "node02",
+            "namespace": "kube-system",
+            "deployment_name": "unknown"
+          }
+        ]
       }
     },
     "cn-wh-b": {
       "cn-wh-b-01": {
-        "node03": [],
-        "node04": []
+        "node03": [
+          {
+            "pod_name": "calico-node-hn4h9",
+            "hostname": "node03",
+            "namespace": "kube-system",
+            "deployment_name": "unknown"
+          },
+          {
+            "pod_name": "kube-proxy-rxmts",
+            "hostname": "node03",
+            "namespace": "kube-system",
+            "deployment_name": "unknown"
+          }
+        ],
+        "node04": [
+          {
+            "pod_name": "calico-node-x5fxh",
+            "hostname": "node04",
+            "namespace": "kube-system",
+            "deployment_name": "unknown"
+          },
+          {
+            "pod_name": "kube-proxy-6qgn9",
+            "hostname": "node04",
+            "namespace": "kube-system",
+            "deployment_name": "unknown"
+          }
+        ]
       },
       "cn-wh-b-02": {
-        "node05": [],
-        "node06": []
+        "node05": [
+          {
+            "pod_name": "calico-node-ld8xx",
+            "hostname": "node05",
+            "namespace": "kube-system",
+            "deployment_name": "unknown"
+          },
+          {
+            "pod_name": "kube-proxy-llcgf",
+            "hostname": "node05",
+            "namespace": "kube-system",
+            "deployment_name": "unknown"
+          }
+        ],
+        "node06": [
+          {
+            "pod_name": "calico-node-nstmx",
+            "hostname": "node06",
+            "namespace": "kube-system",
+            "deployment_name": "unknown"
+          },
+          {
+            "pod_name": "kube-proxy-vs2df",
+            "hostname": "node06",
+            "namespace": "kube-system",
+            "deployment_name": "unknown"
+          }
+        ]
       }
     }
   }
