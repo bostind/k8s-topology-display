@@ -4,7 +4,19 @@
       "cn-wh-a-01": {
         "master01": [
           {
-            "pod_name": "nginx-deployment01-7dd557996-h5482",
+            "pod_name": "nginx-deployment01-7dd557996-2qsln",
+            "hostname": "master01",
+            "namespace": "test0001",
+            "deployment_name": "nginx-deployment01"
+          },
+          {
+            "pod_name": "nginx-deployment01-7dd557996-bkjmq",
+            "hostname": "master01",
+            "namespace": "test0001",
+            "deployment_name": "nginx-deployment01"
+          },
+          {
+            "pod_name": "nginx-deployment01-7dd557996-f7dbw",
             "hostname": "master01",
             "namespace": "test0001",
             "deployment_name": "nginx-deployment01"
@@ -12,27 +24,13 @@
         ]
       },
       "cn-wh-a-02": {
-        "node01": [
-          {
-            "pod_name": "nginx-deployment01-7dd557996-mrsjs",
-            "hostname": "node01",
-            "namespace": "test0001",
-            "deployment_name": "nginx-deployment01"
-          }
-        ],
+        "node01": [],
         "node02": []
       }
     },
     "cn-wh-b": {
       "cn-wh-b-01": {
-        "node03": [
-          {
-            "pod_name": "nginx-deployment01-7dd557996-5hqhn",
-            "hostname": "node03",
-            "namespace": "test0001",
-            "deployment_name": "nginx-deployment01"
-          }
-        ],
+        "node03": [],
         "node04": []
       },
       "cn-wh-b-02": {

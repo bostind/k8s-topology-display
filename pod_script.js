@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchNamespaces();
 
     // 获取pod按钮处理
-    document.getElementById("run-pod-script").addEventListener("click", () => {
+    namespaceSelect.addEventListener("change", () => {
         const selectedNamespace = namespaceSelect.value; // 获取选中的命名空间
         const progressBar = document.querySelector('.progress-bar');
     progressBar.classList.remove('hidden'); // 显示动画
