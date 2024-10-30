@@ -38,13 +38,14 @@ li a.active {
 
 .container {  
     display: grid;
-    grid-template-columns:max-content max-content;
-    grid-template-rows: 60px;
+    grid-template-columns:max-content max-content 1fr 1fr;
+    grid-template-rows: 80px;
     gap: 10px;
     grid-auto-flow: row;
     grid-template-areas:
-      "namespace-select  deployment-select "
-      "progress-bar  progress-bar";
+      "namespace-select  deployment-select region-container content-display "
+      "progress-bar  progress-bar region-container content-display ";
+     
     justify-items: center; /* 水平居中对齐 */
     align-items: center; /* 垂直居中对齐 */
 }
@@ -53,12 +54,6 @@ li a.active {
 .deployment-select { grid-area: deployment-select; }
 .progress-bar { grid-area: progress-bar; }
 
-
-.run-namespace-script { 
-    display: flex;
-    padding: 10px 20px;
-    margin-top: 10px;
- }
 
 
 @keyframes shadowRolling {
@@ -102,7 +97,7 @@ li a.active {
 #content-display {
     display: grid;  
     margin-top: 10px; 
-    border: 1px solid #ffffe5;
+    border: 1px solid #0ee379;
     background-color: #ffffe5;
     padding: 10px;
     width: 100%;
@@ -121,6 +116,7 @@ li a.active {
 }
 
 .region-container {
+    grid-area: region-container;
     display: grid; 
     border: 1px solid  #ea0505c7;
     background-color:  #ffffe5;
