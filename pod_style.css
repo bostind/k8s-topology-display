@@ -38,7 +38,7 @@ li a.active {
 
 .container {  
     display: grid;
-    grid-template-columns:max-content max-content 1fr 1fr;
+    grid-template-columns:max-content max-content auto auto;
     grid-template-rows: 80px;
     gap: 10px;
     grid-auto-flow: row;
