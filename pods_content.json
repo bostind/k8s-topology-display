@@ -4,10 +4,22 @@
       "cn-wh-a-01": {
         "master01": [
           {
+            "pod_name": "nginx-deployment01-7dd557996-4rm4f",
+            "hostname": "master01",
+            "namespace": "default",
+            "deployment_name": "nginx-deployment01"
+          },
+          {
             "pod_name": "nginx-deployment01-7dd557996-vt5qs",
             "hostname": "master01",
             "namespace": "default",
             "deployment_name": "nginx-deployment01"
+          },
+          {
+            "pod_name": "nginx-deployment02-7dd557996-h45s8",
+            "hostname": "master01",
+            "namespace": "default",
+            "deployment_name": "nginx-deployment02"
           },
           {
             "pod_name": "nginx-deployment02-7dd557996-lh6mn",

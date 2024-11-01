@@ -16,14 +16,46 @@ document.addEventListener('DOMContentLoaded', () => {
                 // 填充命名空间选择框
                 const namespaceSelect = document.getElementById('namespace-select');
                 namespaceSelect.innerHTML = ''; // 清空之前的选项
-                namespaceSelect.innerHTML = '<option value="">选择命名空间</option>';
+    
                 data.forEach(namespace => {
-                    const option = document.createElement('option');
-                    option.innerHTML = ''; // 清空之前的选项
-                    option.value = namespace.namespace; // 设置值为命名空间名称
-                    option.textContent = namespace.namespace; // 显示命名空间名称
-                    namespaceSelect.appendChild(option); // 添加到下拉框中
+                    const div = document.createElement('div'); // 创建div元素
+                    div.innerHTML = ''; // 清空之前的内容
+                    div.className = 'namespace';
+                    div.setAttribute('data-value', namespace.namespace); // 设置自定义属性为命名空间名称
+                    div.textContent = namespace.namespace; // 显示命名空间名称
+                    
+                    div.addEventListener("click", function() {
+                        const selectedNamespace = div.getAttribute('data-value'); // 获取当前选中的命名空间
+                        const progressBar = document.querySelector('.progress-bar');
+                        progressBar.classList.remove('hidden'); // 显示动画
+                        document.querySelectorAll('.namespace').forEach(namespace => {
+                            namespace.classList.remove('selected');
+                        });
+                        this.classList.add('selected'); // 给当前选中项添加 selected 类
+    
+                        console.log("选择的命名空间:", selectedNamespace);
+                        fetch('/run-pod-script', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json' // 设置请求头
+                            },
+                            body: JSON.stringify({ namespace: selectedNamespace }) // 将选中的命名空间作为字符串参数传递
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log("脚本执行结果:", data);
+                            fetchContent(selectedNamespace); // 重新获取内容并更新显示
+                            clearInterval(window.progressInterval);   
+                            progressBar.classList.add('hidden'); // 隐藏动画   
+                        })
+                        .catch((error) => {
+                            console.error("发生错误:", error);
+                        });
+                    });
+    
+                    namespaceSelect.appendChild(div); // 添加到容器中
                 });
+    
                 fetchContent(namespaceSelect.value); // 默认获取选中的命名空间内容
             })
             .catch(error => console.error('错误:', error));
@@ -195,31 +227,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 初始加载命名空间
     fetchNamespaces();
-
-    // 获取pod按钮处理
-    namespaceSelect.addEventListener("change", () => {
-        const selectedNamespace = namespaceSelect.value; // 获取选中的命名空间
-        const progressBar = document.querySelector('.progress-bar');
-    progressBar.classList.remove('hidden'); // 显示动画
-        fetch('/run-pod-script', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json' // 设置请求头
-            },
-            body: JSON.stringify({ namespace: selectedNamespace }) // 传递命名空间参数
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log("脚本执行结果:", data);
-            fetchContent(selectedNamespace); // 重新获取内容并更新显示
-            clearInterval(window.progressInterval);   
-            const progressBar = document.querySelector('.progress-bar');
-                 progressBar.classList.add('hidden'); // 隐藏动画   
-        })
-        .catch((error) => {
-            console.error("发生错误:", error);
-        });
-    });
 
     // 刷新按钮处理
     document.getElementById('run-namespace-script').addEventListener('click', function() {

@@ -54,6 +54,43 @@ li a.active {
 .deployment-select { grid-area: deployment-select; }
 .progress-bar { grid-area: progress-bar; }
 
+.label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.namespace-selection, .deployment-selection {
+    margin-bottom: 20px;
+}
+
+.flex-container {
+    display: flex; /* 横排布局 */
+    flex-direction: column; /* 竖排 */
+    gap: 10px; /* 选项间隔 */
+}
+
+.deployment-container {
+    display: flex; 
+    flex-direction: column; /* 竖排 */
+}
+
+.namespace, .deployment {
+    background: #e2e2e2;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.namespace:hover, .deployment:hover {
+    background: #d0d0d0;
+}
+
+.namespace.selected, .deployment.selected {
+    background: #5cb85c; /* 选中后的颜色 */
+    color: white; /* 选中后的字体颜色 */
+}
+
 
 
 @keyframes shadowRolling {

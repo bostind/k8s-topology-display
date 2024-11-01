@@ -16,9 +16,13 @@
     </ul>
     <button id="run-namespace-script" class="run-namespace-script">刷新</button>
     <div class="container">
-        <select id="namespace-select" multiple="multiple">
-            <option value="">选择命名空间</option>
-        </select>
+       
+        <div class="namespace-selection">
+            <label>选择命名空间:</label>
+            <div id="namespace-select" class="flex-container">
+                <!-- 动态生成命名空间选项 -->
+            </div>
+        </div>
         <select id="deployment-select" multiple="multiple">
             <option value="">全部拓扑</option>
         </select>
