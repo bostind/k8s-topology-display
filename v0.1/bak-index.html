@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <title>拓扑展示</title>  
+</head>
+<body>
+    <h1>拓扑展示</h1>
+    <p>展示示例</p>
+    <!-- 添加一个 Mermaid 图示的示例 -->
+    <div class="mermaid">
+        graph TD
+        subgraph region
+        subgraph zone
+        subgraph rack
+        end
+        end
+        end
+    </div>
+    <p><a href="/node.html" target="_blank">node拓扑展示</a></p>
+    <p><a href="/pod.html" target="_blank">pod拓扑展示</a></p>
+</body>
+</html>
