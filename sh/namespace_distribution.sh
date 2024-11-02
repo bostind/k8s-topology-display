@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 输出的 JSON 文件名
-output_file="namespaces_content.json"
+output_file="content/namespaces_content.json"
 
 # 获取所有命名空间信息
 namespaces=$(kubectl get namespaces -o json)

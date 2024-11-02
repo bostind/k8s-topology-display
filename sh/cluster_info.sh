@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 输出文件
-OUTPUT_FILE="cluster_content.json"
+OUTPUT_FILE="content/cluster_content.json"
 
 # 获取集群版本
 K8S_VERSION=$(kubectl version | grep "Server" | awk '{print $3}')

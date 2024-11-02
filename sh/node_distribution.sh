@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 输出的 JSON 文件名
-output_file="nodes_content.json"
+output_file="content/nodes_content.json"
 
 # 临时文件用于存储 json_output
 temp_file=$(mktemp)

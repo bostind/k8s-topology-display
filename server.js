@@ -9,16 +9,15 @@ const PORT = 3000;
 app.use(express.static(path.join(__dirname)));
 
 function runScripts() {
-    exec('sh/namespace_distribution.sh', (error, stdout, stderr) => {
-        if (error) {
-            console.error(`执行 namespace 脚本错误: ${error.message}`);
-        }
-        if (stderr) {
-            console.error(`namespace 脚本错误输出: ${stderr}`);
-        } else {
-            console.log(`${stdout}`);
-        }
-    });
+    exec('sh/cluster_info.sh',(error, stdout, stderr) => {
+      console.log(`${stdout}`);  
+        });
+    exec('sh/namespace_distribution.sh',(error, stdout, stderr) => {
+        console.log(`${stdout}`);  
+      });
+    exec('sh/node_distribution.sh',(error, stdout, stderr) => {
+        console.log(`${stdout}`);  
+      });
 }
 
 app.post('/run-namespace-script', (req, res) => {
@@ -37,7 +36,7 @@ app.post('/run-namespace-script', (req, res) => {
 });
 // 获取命名空间内容的 API
     app.get('/api/namespaces', (req, res) => {
-        fs.readFile('namespaces_content.json', 'utf8', (err, data) => {
+        fs.readFile('content/namespaces_content.json', 'utf8', (err, data) => {
             if (err) {
                 return res.status(500).send('文件读取失败');
             }
@@ -62,7 +61,7 @@ app.post('/run-node-script', (req, res) => {
     });
 });
 app.get('/api/nodes', (req, res) => {
-    fs.readFile('nodes_content.json', 'utf8', (err, data) => {
+    fs.readFile('content/nodes_content.json', 'utf8', (err, data) => {
         if (err) {
             return res.status(500).send('文件读取失败');
         }
@@ -85,7 +84,7 @@ app.post('/cluster-info', (req, res) => {
     });
 });
 app.get('/api/cluster', (req, res) => {
-    fs.readFile('cluster_content.json', 'utf8', (err, data) => {
+    fs.readFile('content/cluster_content.json', 'utf8', (err, data) => {
         if (err) {
             return res.status(500).send('文件读取失败');
         }
@@ -111,7 +110,7 @@ app.post('/run-pod-script', express.json(), (req, res) => {
 
 // 获取 Pods 内容的 API，根据命名空间过滤
 app.get('/api/pods', (req, res) => {
-    fs.readFile('pods_content.json', 'utf8', (err, data) => {
+    fs.readFile('content/pods_content.json', 'utf8', (err, data) => {
         if (err) {
             return res.status(500).send('文件读取失败');
         }
