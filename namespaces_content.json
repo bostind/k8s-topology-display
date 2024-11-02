@@ -13,11 +13,5 @@
       "coredns",
       "metrics-server"
     ]
-  },
-  {
-    "namespace": "test0001",
-    "deployments": [
-      "nginx-deployment01"
-    ]
   }
 ]

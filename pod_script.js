@@ -32,8 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             namespace.classList.remove('selected');
                         });
                         this.classList.add('selected'); // 给当前选中项添加 selected 类
-    
-                        console.log("选择的命名空间:", selectedNamespace);
                         fetch('/run-pod-script', {
                             method: 'POST',
                             headers: {
@@ -74,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 // 清空之前的内容
                 contentDisplay.innerHTML = '';
-                deploymentSelect.innerHTML = '<option value="">全部拓扑</option>'; // 清空部署下拉框
+                deploymentSelect.innerHTML = ''; // 清空部署下拉框
 
                 const deployments = new Set(); // 存储该命名空间下的 Deployments
 
@@ -141,10 +139,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // 填充 Deployment 选择框
                 deployments.forEach(deployment => {
-                    const option = document.createElement('option');
-                    option.value = deployment; // 设置值为 Deployment 名称
-                    option.textContent = deployment; // 显示 Deployment 名称
-                    deploymentSelect.appendChild(option); // 添加到 Deployment 下拉框
+                    const div = document.createElement('div');
+                    div.className = 'deployment';
+                    div.value = deployment; // 设置值为 Deployment 名称
+                    div.textContent = deployment; // 显示 Deployment 名称
+                    div.dataset.value = deployment;
+                    //deploymentSelect.appendChild(option); // 添加到 Deployment 下拉框
+                    // 选择 Deployment 后更新展示
+                    div.addEventListener('click', function() {
+                        selectedDeployment = this.getAttribute('data-value'); {
+        //const selectedDeployment = deploymentSelect.value;
+        //document.getElementById("deployment-display").textContent = selectedDeployment ? `${selectedDeployment}` : ''; // 更新显示
+        fetchPodsData(namespaceSelect.value, selectedDeployment); // 根据选择刷新内容，传递命名空间和 Deployment
+                 };
+                 document.querySelectorAll('.deployment').forEach(deployment => {
+                    deployment.classList.remove('selected');
+                });
+                this.classList.add('selected'); // 给当前选中项添加 selected 类
+                });
+                deploymentSelect.appendChild(div);
                 });
             })
             .catch(error => console.error('错误:', error));
@@ -263,17 +276,12 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('错误:', error);
         });
         
-         progressBar.classList.add('hidden'); // 隐藏动画 
+         //progressBar.classList.add('hidden'); // 隐藏动画 
     });
     // 选择命名空间后重新加载 Pods 数据
     namespaceSelect.addEventListener('change', () => {
         fetchContent(namespaceSelect.value); // 根据选择刷新内容
     });
 
-    // 选择 Deployment 后更新展示
-    deploymentSelect.addEventListener('change', () => {
-        const selectedDeployment = deploymentSelect.value;
-        document.getElementById("deployment-display").textContent = selectedDeployment ? `${selectedDeployment}` : ''; // 更新显示
-        fetchPodsData(namespaceSelect.value, selectedDeployment); // 根据选择刷新内容，传递命名空间和 Deployment
-    });
+    
 });

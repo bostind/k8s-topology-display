@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     padding: 10px;
-    background-color: #ffffe5;
+    background-color: #ffffff;
 }
 
 ul {
@@ -33,23 +33,18 @@ li a.active {
     color: white;
     background-color: #4CAF50;
 }
-.container {  
+
+.run-bar {  
     display: grid;
-    grid-template-columns:100px max-content 100px max-content;
-    grid-template-rows: 30px;
-    gap: 10px;
+    grid-template-columns:50px 100px;
+    grid-template-rows: 25px;
+    gap: 100px;
     grid-auto-flow: row;
     grid-template-areas:
-      "run-namespace-script  namespace-select button-container deployment-select "
-      "progress-bar progress-bar progress-bar progress-bar";
-    justify-items: center; /* 水平居中对齐 */
-    align-items: center; /* 垂直居中对齐 */
+      "run-node-script  progress-bar";
+    justify-items: start; /* 水平居中对齐 */
+    align-items: center;
 }
-.run-namespace-script { grid-area: run-namespace-script; }
-.namespace-select { grid-area: namespace-select; }
-.button-container { grid-area: button-container; }
-.deployment-select { grid-area: deployment-select; }
-.progress-bar { grid-area: progress-bar; }
 
 @keyframes shadowRolling {
     0%   { box-shadow: 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);}
@@ -63,7 +58,10 @@ li a.active {
     100% { box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0);}
   }
   
+.run-node-script {
+    grid-area: run-node-script;}
 .progress-bar {
+    grid-area:progress-bar;
     position: relative;
     width: 10px;
     height: 10px;
@@ -76,24 +74,14 @@ li a.active {
 .hidden {
     display: none; /* 隐藏元素 */
 }
-.deployment-display {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    padding: 10px; /* 添加内边距 */
-    border-radius: 5px; /* 圆角效果 */
-    background-color: #129c05db; /* 背景颜色，可以根据需要调整 */
-    display: flex; /* 使用 Flexbox */
-    align-items: center; /* 垂直居中 */
-    justify-content: center; /* 水平居中 */
-    margin: 10px 0; /* 部署展示区的上下间距 */
-}
+
 
 
 #content-display {
     display: grid;  
     margin-top: 10px; 
-    border: 1px solid #ffffe5;
-    background-color: #ffffe5;
+    border: 1px solid #ffffff;
+    background-color: #ffffff;
     padding: 10px;
     width: 100%;
     max-width: 1200px; 

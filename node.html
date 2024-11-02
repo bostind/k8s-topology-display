@@ -13,9 +13,11 @@
         <li><a class="active" href="node.html">Node拓扑</a></li>
         <li><a href="pod.html">Pod拓扑</a></li>
     </ul>
-    <button id="run-node-script">刷新</button>
-    <div class="progress-bar hidden" id="progress-bar"></div>
-    <div id="content-display" class="region-container"></div>
+    <div class="run-bar">
+        <button id="run-node-script" class="run-node-script">刷新</button>
+        <div id="progress-bar" class="progress-bar hidden"></div>
+    </div>
+    <div id="content-display" class="content-display"></div>
     <script src="node_script.js"></script>
     <script>
         // 添加按钮点击事件处理

@@ -13,8 +13,10 @@
         <li><a href="node.html">Node拓扑</a></li>
         <li><a href="pod.html">Pod拓扑</a></li>
     </ul>
-    <button id="cluster-info">刷新</button>
-    <div class="progress-bar hidden" id="progress-bar"></div>
+    <div class="run-bar">
+        <button id="cluster-info" class="run-node-script">刷新</button>
+        <div id="progress-bar" class="progress-bar hidden"></div>
+    </div>
     <div id="cluster-display" class="cluster-container">
         <h2>集群信息</h2>
         <p>集群版本: <strong id="cluster-version"></strong></p>
