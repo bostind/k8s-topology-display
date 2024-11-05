@@ -1,11 +1,11 @@
 # 拓扑信息输出展示
 1、node拓扑展示效果
 
-![alt text](/images/image01.png "效果图")
+![alt text](/v0.1/images/image01.png "效果图")
 
 2、pod拓扑展示效果
 
-![alt text](/images/image02.png "效果图")
+![alt text](/v0.1/images/image02.png "效果图")
 
 # 使用方式
 
