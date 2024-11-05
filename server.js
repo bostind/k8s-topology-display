@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const { exec } = require('child_process');
 const app = express();
-const PORT = 3000;
+const PORT = 3008;
 
 // 使用静态文件服务
 app.use(express.static(path.join(__dirname)));
