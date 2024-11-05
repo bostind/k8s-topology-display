@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node拓扑</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="image/favicon.ico" type="image/icon">
+</head>
+<body>
+    <ul>
+        <li><a href="index.html">主页</a></li>
+        <li><a class="active" href="node.html">Node拓扑</a></li>
+        <li><a href="pod.html">Pod拓扑</a></li>
+    </ul>
+    <div class="run-bar">
+        <button id="run-node-script" class="run-node-script">刷新</button>
+        <div id="progress-bar" class="progress-bar hidden"></div>
+    </div>
+    <div id="content-display" class="content-display"></div>
+    <script src="node_script.js"></script>
+    <script>
+        // 添加按钮点击事件处理
+        document.getElementById('run-node-script').addEventListener('click', function() {
+            const progressBar = document.querySelector('.progress-bar');
+        progressBar.classList.remove('hidden'); // 显示动画
+            fetch('/run-node-script', {
+                method: 'POST',
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("脚本执行结果:", data);
+                //setTimeout(function() {
+                location.reload();
+                const progressBar = document.querySelector('.progress-bar');
+                 progressBar.classList.add('hidden'); // 隐藏动画  
+            //}, 5000); // 5000毫秒即5秒
+            })
+            .catch((error) => {
+                console.error("发生错误:", error);
+            });
+        });
+    </script>
+</body>
+</html>

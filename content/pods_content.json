@@ -1,0 +1,103 @@
+{
+  "cn-wh": {
+    "cn-wh-a": {
+      "cn-wh-a-01": {
+        "master01": [
+          {
+            "pod_name": "nginx-deployment01-7dd557996-4rm4f",
+            "hostname": "master01",
+            "namespace": "default",
+            "deployment_name": "nginx-deployment01"
+          },
+          {
+            "pod_name": "nginx-deployment01-7dd557996-vt5qs",
+            "hostname": "master01",
+            "namespace": "default",
+            "deployment_name": "nginx-deployment01"
+          },
+          {
+            "pod_name": "nginx-deployment02-7dd557996-6vhjq",
+            "hostname": "master01",
+            "namespace": "default",
+            "deployment_name": "nginx-deployment02"
+          },
+          {
+            "pod_name": "nginx-deployment02-7dd557996-9ffsf",
+            "hostname": "master01",
+            "namespace": "default",
+            "deployment_name": "nginx-deployment02"
+          },
+          {
+            "pod_name": "nginx-deployment02-7dd557996-h45s8",
+            "hostname": "master01",
+            "namespace": "default",
+            "deployment_name": "nginx-deployment02"
+          },
+          {
+            "pod_name": "nginx-deployment02-7dd557996-lh6mn",
+            "hostname": "master01",
+            "namespace": "default",
+            "deployment_name": "nginx-deployment02"
+          }
+        ]
+      }
+    },
+    "cn-wh-b": {
+      "cn-wh-b-02": {
+        "node01": [
+          {
+            "pod_name": "nginx-deployment02-7dd557996-5djvk",
+            "hostname": "node01",
+            "namespace": "default",
+            "deployment_name": "nginx-deployment02"
+          },
+          {
+            "pod_name": "nginx-deployment02-7dd557996-bd6m9",
+            "hostname": "node01",
+            "namespace": "default",
+            "deployment_name": "nginx-deployment02"
+          }
+        ],
+        "node02": []
+      },
+      "cn-wh-b-01": {
+        "node03": [
+          {
+            "pod_name": "nginx-deployment01-7dd557996-qrxhk",
+            "hostname": "node03",
+            "namespace": "default",
+            "deployment_name": "nginx-deployment01"
+          },
+          {
+            "pod_name": "nginx-deployment02-7dd557996-hf6r4",
+            "hostname": "node03",
+            "namespace": "default",
+            "deployment_name": "nginx-deployment02"
+          }
+        ]
+      },
+      "cn-wh-b-04": {
+        "node04": []
+      },
+      "cn-wh-b-05": {
+        "node05": [
+          {
+            "pod_name": "nginx-deployment01-7dd557996-4xvj9",
+            "hostname": "node05",
+            "namespace": "default",
+            "deployment_name": "nginx-deployment01"
+          },
+          {
+            "pod_name": "nginx-deployment02-7dd557996-d9n4f",
+            "hostname": "node05",
+            "namespace": "default",
+            "deployment_name": "nginx-deployment02"
+          }
+        ]
+      },
+      "cn-wh-b-06": {
+        "node06": []
+      }
+    }
+  }
+}

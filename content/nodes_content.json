@@ -1,0 +1,41 @@
+{
+  "cn-wh": {
+    "cn-wh-a": {
+      "cn-wh-a-01": [
+        {
+          "hostname": "master01"
+        }
+      ]
+    },
+    "cn-wh-b": {
+      "cn-wh-b-02": [
+        {
+          "hostname": "node01"
+        },
+        {
+          "hostname": "node02"
+        }
+      ],
+      "cn-wh-b-01": [
+        {
+          "hostname": "node03"
+        }
+      ],
+      "cn-wh-b-04": [
+        {
+          "hostname": "node04"
+        }
+      ],
+      "cn-wh-b-05": [
+        {
+          "hostname": "node05"
+        }
+      ],
+      "cn-wh-b-06": [
+        {
+          "hostname": "node06"
+        }
+      ]
+    }
+  }
+}

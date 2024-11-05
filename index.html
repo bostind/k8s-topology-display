@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>集群信息</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="image/favicon.ico" type="image/icon">
+</head>
+<body>
+    <ul>
+        <li><a class="active" href="index.html">主页</a></li>
+        <li><a href="node.html">Node拓扑</a></li>
+        <li><a href="pod.html">Pod拓扑</a></li>
+    </ul>
+    <div class="run-bar">
+        <button id="cluster-info" class="run-node-script">刷新</button>
+        <div id="progress-bar" class="progress-bar hidden"></div>
+    </div>
+    <div id="cluster-display" class="cluster-container">
+        <h2>集群信息</h2>
+        <p>集群版本: <strong id="cluster-version"></strong></p>
+        <p>节点数量: <strong id="node-count"></strong></p>
+    
+        <h2>资源信息</h2>
+        <table id="namespace-table">
+            <thead>
+                <tr>
+                    <th>命名空间</th>
+                    <th>部署数量</th>
+                    <th>Pod数量</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <script src="cluster_script.js"></script>
+</body>
+</html>

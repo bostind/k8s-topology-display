@@ -1,0 +1,17 @@
+[
+  {
+    "namespace": "default",
+    "deployments": [
+      "nginx-deployment01",
+      "nginx-deployment02"
+    ]
+  },
+  {
+    "namespace": "kube-system",
+    "deployments": [
+      "calico-kube-controllers",
+      "coredns",
+      "metrics-server"
+    ]
+  }
+]

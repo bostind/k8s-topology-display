@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pod拓扑</title>
+    <link rel="stylesheet" href="pod_style.css">  
+    <link rel="icon" href="image/favicon.ico" type="image/icon"> 
+    
+</head>
+<body>
+    <ul>
+        <li><a href="index.html">主页</a></li>
+        <li><a href="node.html">Node拓扑</a></li>
+        <li><a class="active" href="pod.html">Pod拓扑</a></li>
+    </ul>
+    <div class="run-bar">
+        <button id="run-namespace-script" class="run-namespace-script">刷新</button>
+        <div id="progress-bar" class="progress-bar hidden"></div>
+    </div>
+    <div class="container">
+        <div class="namespace-selection">
+            <namespace-label>命名空间</namespace-label>
+            <div id="namespace-select" class="namespace-container">
+                <!-- 动态生成命名空间选项 -->
+            </div>
+        </div>
+
+        <div class="deployment-selection">
+            <deployment-label>部署</deployment-label>
+            <div id="deployment-select" class="deployment-container">
+                <!-- 根据选中的命名空间动态生成部署选项 -->
+            </div>
+        </div>
+    
+        <div id="content-display" class="content-display"></div>
+        
+<!--
+        <div class="region-container"> 
+            <div id="content-display" class="region-container"></div>
+        </div>
+        -->
+    </div>
+    <script src="pod_script.js"></script>
+</body>
+</html>
