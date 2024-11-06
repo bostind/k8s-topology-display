@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 Object.keys(data).forEach(region => {
                     const regionDiv = document.createElement('div');
                     regionDiv.className = 'region-container';
-                    //regionDiv.innerHTML = `<h1>${region}</h1>`;
+                  
                     const regionName = document.createElement('h1');
                     regionName.className = 'region-name'; // 设置 region名称的类
                     regionName.textContent = region; // 设置 region 名称的文本内容
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     Object.keys(zones).forEach(zone => {
                         const zoneDiv = document.createElement('div');
                         zoneDiv.className = 'zone-container';
-                        // zoneDiv.innerHTML = `${zone}`;
+                        
                         const zoneName = document.createElement('h2');
                               zoneName.className = 'zone-name'; // 设置 zone 名称的类
                               zoneName.textContent = zone; // 设置 zone 名称的文本内容
@@ -144,12 +144,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     div.value = deployment; // 设置值为 Deployment 名称
                     div.textContent = deployment; // 显示 Deployment 名称
                     div.dataset.value = deployment;
-                    //deploymentSelect.appendChild(option); // 添加到 Deployment 下拉框
-                    // 选择 Deployment 后更新展示
+                  
                     div.addEventListener('click', function() {
                         selectedDeployment = this.getAttribute('data-value'); {
-        //const selectedDeployment = deploymentSelect.value;
-        //document.getElementById("deployment-display").textContent = selectedDeployment ? `${selectedDeployment}` : ''; // 更新显示
+
         fetchPodsData(namespaceSelect.value, selectedDeployment); // 根据选择刷新内容，传递命名空间和 Deployment
                  };
                  document.querySelectorAll('.deployment').forEach(deployment => {
@@ -189,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     Object.keys(zones).forEach(zone => {
                         const zoneDiv = document.createElement('div');
                         zoneDiv.className = 'zone-container';
-                        // zoneDiv.innerHTML = `${zone}`;
+                       
                         const zoneName = document.createElement('h2');
                               zoneName.className = 'zone-name'; // 设置 zone 名称的类
                               zoneName.textContent = zone; // 设置 zone 名称的文本内容
@@ -276,7 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('错误:', error);
         });
         
-         //progressBar.classList.add('hidden'); // 隐藏动画 
+        
     });
     // 选择命名空间后重新加载 Pods 数据
     namespaceSelect.addEventListener('change', () => {

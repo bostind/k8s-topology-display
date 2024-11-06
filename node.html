@@ -30,11 +30,11 @@
             .then(response => response.json())
             .then(data => {
                 console.log("脚本执行结果:", data);
-                //setTimeout(function() {
+              
                 location.reload();
                 const progressBar = document.querySelector('.progress-bar');
                  progressBar.classList.add('hidden'); // 隐藏动画  
-            //}, 5000); // 5000毫秒即5秒
+           
             })
             .catch((error) => {
                 console.error("发生错误:", error);

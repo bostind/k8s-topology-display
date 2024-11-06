@@ -54,8 +54,7 @@ li a.active {
     grid-auto-flow: row;
     grid-template-areas:
       "namespace-selection  deployment-selection  content-display";
-    /*justify-items: center; /* 水平居中对齐 */
-    /*align-items: center; /* 垂直居中对齐 */
+  
 }
 
 .namespace-selection { 
